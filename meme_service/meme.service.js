@@ -4,7 +4,9 @@
 let gMeme = {
     img: new Image(),
     topText: '',
-    bottomText: ''
+    bottomText: '',
+    textColor: 'white',
+    strokeColor: 'black'
 }
 
 function getMeme() {

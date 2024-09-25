@@ -1,13 +1,16 @@
+'use strict'
 
 let gElCanvas
 let gCtx
 
-function onInit() {
+
+function initCanvas() {
     gElCanvas = document.getElementById('memeCanvas')
     gCtx = gElCanvas.getContext('2d')
-    addListeners()
+    // showEditor()
     renderGallery()
     initMemeEditor()
+    addListeners()
     //* render
     renderMeme()
 }
@@ -17,16 +20,16 @@ function initMemeEditor() {
     imageUpload.addEventListener('change', handleImageUpload)
 
     document.querySelector('.topText').addEventListener('input', (event) => {
-        gMeme.topText=event.target.value
+        gMeme.topText = event.target.value
         renderMeme()
     })
 
-    document.querySelector('.bottomText').addEventListener('input', (event) =>{
-        gMeme.bottomText=event.target.value
+    document.querySelector('.bottomText').addEventListener('input', (event) => {
+        gMeme.bottomText = event.target.value
         renderMeme()
     })
 
-    document.querySelector('.textColor').addEventListener('input', (renderMeme) )
+    document.querySelector('.textColor').addEventListener('input', (renderMeme))
 }
 
 
@@ -56,7 +59,7 @@ function renderMeme() {
     gCtx.font = '30px Impact'
     gCtx.fillStyle = document.querySelector('.textColor').value
     gCtx.strokeStyle = document.querySelector('.stokeColor').value
-    // gCtx.strokeStyle = 'black'
+    gCtx.strokeStyle = 'black'
     gCtx.lineWidth = 2
     gCtx.textAlign = 'center'
 
@@ -72,7 +75,7 @@ function renderMeme() {
 const hoverModal = document.getElementById('hoverModal')
 
 document.querySelectorAll('.clickable').forEach(img => {
-    img.addEventListener('mouseover', function(event) {
+    img.addEventListener('mouseover', function (event) {
 
         const description = this.getAttribute('data-description')
         hoverModal.innerHTML = description
@@ -85,12 +88,12 @@ document.querySelectorAll('.clickable').forEach(img => {
         hoverModal.style.left = event.pageX + 15 + 'px'
     })
 
-    img.addEventListener('mouseout', function() {
+    img.addEventListener('mouseout', function () {
         //* Hide the modal when the mouse leaves the image
         hoverModal.style.display = 'none'
     })
 
-    img.addEventListener('mousemove', function(event) {
+    img.addEventListener('mousemove', function (event) {
         hoverModal.style.top = event.pageY + 15 + 'px'
         hoverModal.style.left = event.pageX + 15 + 'px'
     })
@@ -131,15 +134,10 @@ function addMouseListeners() {
     gElCanvas.addEventListener('mouseup', onUp)
 }
 
-// img.addEventListener('mouseover', function(event) {
-//     const description = this.getAttribute('data-description')
-//     hoverModal.innerHTML = description
-//     hoverModal.style.visibility = 'visible'
 
-//     hoverModal.style.top = event.pageY + 15 + 'px'
-//     hoverModal.style.left = event.pageX + 15 + 'px'
-// })
 
-// img.addEventListener('mouseout', function() {
-//     hoverModal.style.visibility = 'hidden'
-// })
+
+
+
+
+

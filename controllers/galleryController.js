@@ -1,3 +1,13 @@
+'use strict'
+
+let gClickEditor = false // Fix variable name
+
+function onInit() {
+    renderGallery()
+    setupGalleryEvents()
+    initCanvas()
+}
+
 function renderGallery() {
     const gallery = document.querySelector('.grid-container')
     const imgs = [
@@ -18,21 +28,58 @@ function renderGallery() {
         { src: './img/bander-7.png', alt: 'The Enchanted Island', description: 'The Enchanted Island' }
     ]
     
-
     const imgHTML = imgs.map(img => `
         <img src="${img.src}" alt="${img.alt}" class="clickable" data-description="${img.description}">
     `)
     gallery.innerHTML = imgHTML.join('')
 }
 
+function setupGalleryEvents() {
+    const gallery = document.querySelector('.grid-container')
+    gallery.addEventListener('click', function (event) {
+        if (event.target.classList.contains('clickable')) {
+            const imgSrc = event.target.getAttribute('src')
+            const description = event.target.getAttribute('data-description')
+            showEditor(imgSrc, description)
+        }
+    })
+}
 
-function onImgSelect(event) {
-    if (event.target.classList.contains('clickable')) {
-        const imgSrc = event.target.getAttribute('src')
-        setImg(imgSrc)
+function showEditor(imgSrc, description) {
+    const clickEditor = document.querySelector('.editor-section')
+    const clickSearch = document.querySelector('.search-an-img')
+    const gallery = document.querySelector('.gallery-section')
+
+    //* Hide gallery and show editor
+    gallery.style.display = 'none'
+    clickSearch.style.display = 'none'
+    clickEditor.style.display = 'block'
+
+    //* Set the image on the canvas
+    setImg(imgSrc)
+    renderMeme()
+
+    //* update the description
+    const descriptionElement = document.createElement('p')
+    descriptionElement.textContent = description
+    clickEditor.appendChild(descriptionElement)
+    clickSearch.appendChild(descriptionElement)
+}
+
+function setImg(imgSrc) {
+    const img = new Image()
+    img.src = imgSrc
+    const canvas = document.getElementById('memeCanvas')
+    const ctx = canvas.getContext('2d')
+
+    img.onload = function () {
+        gMeme.img = img
+        // gElCanvas.width = img.width;
+        // gElCanvas.height = img.height;
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
         renderMeme()
     }
 }
 
-//* move the selected img to canvas
-document.querySelector('.grid-container').addEventListener('click', onImgSelect)
+//! the renderMeme in the memeController where is belongs
