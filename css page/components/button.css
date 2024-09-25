@@ -1,0 +1,12 @@
+.saved-memes-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.saved-meme {
+    border: 1px solid #ccc;
+    padding: 5px;
+    max-width: 200px;
+    text-align: center;
+}

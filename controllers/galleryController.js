@@ -6,6 +6,7 @@ function onInit() {
     renderGallery()
     setupGalleryEvents()
     initCanvas()
+    renderSavedMemes()
 }
 
 function renderGallery() {
@@ -77,6 +78,8 @@ function onSave() {
     //* Show the saved memes 
     savedMemesSection.style.display = 'block'
 
+    saveMemeImage()
+
     const savedMemesContainer = document.querySelector('.saved-memes-container')
     const newMeme = document.createElement('div')
     newMeme.innerText = "your meme has been saved"
@@ -91,8 +94,8 @@ function setImg(imgSrc) {
 
     img.onload = function () {
         gMeme.img = img
-        // gElCanvas.width = img.width;
-        // gElCanvas.height = img.height;
+        // gElCanvas.width = img.width
+        // gElCanvas.height = img.height
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
         renderMeme()
@@ -100,3 +103,33 @@ function setImg(imgSrc) {
 }
 
 //! the renderMeme in the memeController where is belongs
+
+function saveMemeImage() {
+    const canvas = document.getElementById('memeCanvas')
+    const imgData = canvas.toDataURL("img/png")
+
+    const meme = {
+        imgData: imgData,
+        topText: document.querySelector('.topText').value,
+        bottomText: document.querySelector('.bottomText').value
+    }
+    //? after those changes ? yes : no (does not matter) nut those only the changes i have right now
+    saveMemeToStorage(meme)
+}
+
+
+function renderSavedMemes() {
+    const savedMemesContainer = document.querySelector('.saved-memes-container')
+    const memes = loadMemesFromStorage()
+
+    //! have to render all the time becouse the user can change the img every sec
+    //* Create saved memes
+    const memesHTML = memes.map(meme => `
+        <div class="saved-meme">
+            <canvas src="${meme.imgData}" width="200" height="200"></canvas>
+            <p>${meme.topText}</p>
+            <p>${meme.bottomText}</p>
+        </div>
+    `)
+    savedMemesContainer.innerHTML = memesHTML.join('')
+}
