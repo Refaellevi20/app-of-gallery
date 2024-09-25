@@ -16,12 +16,12 @@ function initMemeEditor() {
     imageUpload.addEventListener('change', handleImageUpload)
 
     document.querySelector('.topText').addEventListener('input', (event) => {
-        setLineTxt(event.target.value, gMeme.bottomText)
+        gMeme.topText=event.target.value
         renderMeme()
     })
 
     document.querySelector('.bottomText').addEventListener('input', (event) =>{
-        setLineTxt(event.target.value, gMeme.bottomText)
+        gMeme.bottomText=event.target.value
         renderMeme()
     })
 
@@ -52,9 +52,10 @@ function renderMeme() {
     gCtx.drawImage(gMeme.img, 0, 0, gElCanvas.width, gElCanvas.height)
 
     //* style for text
-    gCtx.font = '40px Impact'
-    gCtx.fillStyle = document.getElementById('textColor').value
-    gCtx.strokeStyle = 'black'
+    gCtx.font = '30px Impact'
+    gCtx.fillStyle = document.querySelector('.textColor').value
+    gCtx.strokeStyle = document.querySelector('.stokeColor').value
+    // gCtx.strokeStyle = 'black'
     gCtx.lineWidth = 2
     gCtx.textAlign = 'center'
 
