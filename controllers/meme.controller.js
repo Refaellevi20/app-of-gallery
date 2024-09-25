@@ -67,3 +67,33 @@ function renderMeme() {
     gCtx.fillText(gMeme.bottomText.toUpperCase(), gElCanvas.width / 2, gElCanvas.height - 20)
     gCtx.strokeText(gMeme.bottomText.toUpperCase(), gElCanvas.width / 2, gElCanvas.height - 20)
 }
+
+// const hoverModal = document.getElementById('hoverModal')
+
+// document.querySelectorAll('.clickable').forEach(img => {
+//     img.addEventListener('mouseover', function(event) {
+//         const description = this.getAttribute('data-description')
+//         hoverModal.innerHTML = description
+
+//         // Show the modal
+//         hoverModal.style.display = 'block'
+
+//         // Position the modal
+//         hoverModal.style.top = event.pageY + 15 + 'px'
+//         hoverModal.style.left = event.pageX + 15 + 'px'
+//     })
+
+//     img.addEventListener('mouseout', function() {
+//         // Hide the modal when the mouse leaves the image
+//         hoverModal.style.display = 'none'
+//     })
+
+//     img.addEventListener('mousemove', function(event) {
+//         // Update position on mouse move
+//         hoverModal.style.top = event.pageY + 15 + 'px'
+//         hoverModal.style.left = event.pageX + 15 + 'px'
+//     })
+// })
+
+
+
