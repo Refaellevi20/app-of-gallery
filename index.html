@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="css main/styles.css"> -->
-     <link rel="stylesheet" href="staly.css">
+    <link rel="stylesheet" href="staly.css">
     <title>Image Gallery</title>
 </head>
+
 <body onload="onInit()">
     <div class="container">
         <!-- Gallery Section -->
@@ -15,7 +17,7 @@
             <div class="grid-container grid" onclick="onMouseClick(event)">
                 <img src="./img/team-1.png" alt="Dragon" class="clickable" data-description="Free Dragon">
                 <img src="./img/team-2.png" alt="Knight" class="clickable" data-description="Fire Knight">
-                <img src="./img/team-3.png" alt="Warrior" class="clickable" data-description="Ice Warrior">
+                <!-- <img src="./img/team-3.png" alt="Warrior" class="clickable" data-description="Ice Warrior"> -->
                 <!-- Add more images -->
             </div>
         </section>
@@ -25,11 +27,11 @@
             <h2>Meme Editor</h2>
             <div class="editor-container">
                 <input type="file" id="imageUpload" accept="image/*">
-                <canvas id="memeCanvas"></canvas>
+                <canvas id="memeCanvas" width="200" height="200"></canvas>
                 <div class="controls">
-                    <input type="text" id="topText" placeholder="Top text">
-                    <input type="text" id="bottomText" placeholder="Bottom text">
-                    <input type="color" id="textColor" value="#ffffff">
+                    <input type="text" class="topText" placeholder="Top text">
+                    <input type="text" class="bottomText" placeholder="Bottom text">
+                    <input type="color" class="textColor" value="#ffffff">
                     <button id="downloadBtn">Download Meme</button>
                 </div>
             </div>
@@ -37,9 +39,13 @@
     </div>
 
     <div class="user-msg"></div>
-    
-<!-- <script src="storage.service.js"></script> -->
-<!-- <script src="service/main.service.js"></script> -->
-<script src="main.js"></script>
+
+    <script src="renderGallery.js"></script>
+    <script src="controllers/galleryController.js"></script>
+    <!-- <script src="storage.service.js"></script> -->
+    <script src="meme_service/meme.service.js"></script>
+    <script src="main.js"></script>
+    <script src="controllers/meme.controller.js"></script>
 </body>
+
 </html>

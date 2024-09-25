@@ -1,0 +1,24 @@
+.search-an-img {
+    text-align: center;
+    /* font-size: 1em;
+    border-radius: 2em;
+    padding: 0.9em 1.625em;
+    transition: padding .4s; */
+    text-transform: uppercase;
+}
+
+input {
+    padding: 0.25em 1em;
+    border-radius: 2em;
+    font-size: 1.25rem;
+    transition: 0.3s border;
+}
+
+.search-an-img input[type="search"] {
+    width: 60%;
+}
+
+.input, button, textarea, select {
+    font: inherit;
+    border: inherit;
+}
