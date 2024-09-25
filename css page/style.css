@@ -9,12 +9,12 @@
 
 /* COMPONENTS */
 @import url('./components/card.css');
-@import url('./components/main-content.css');
+@import url('./components/editor.css');
 @import url('./components/main-header.css');
 @import url('./components/main-footer.css');
 @import url('./components/main-nav.css');
 @import url('./components/logo.css');
-@import url('./components/pagination.css');
+@import url('./components/search.css');
 
 /* Media Queries */
 @import url('./setup/mq.css');

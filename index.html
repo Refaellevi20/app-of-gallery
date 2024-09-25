@@ -6,28 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="css main/styles.css"> -->
     <link rel="stylesheet" href="css page/style.css">
-   <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="header.css">
     <title>Image Gallery</title>
 </head>
 
 <body onload="onInit()">
 
-
     <header class="header">
         <a href="#default" class="logo">Game of Thrones</a>
         <nav class="header-right">
-          <a class="nav-btn" href="index_saved.html">saved</a>
-          <a class="nav-btn" href="index.html">home</a>
-          <a class="nav-btn" href="page.html">Edit</a>
+            <a class="nav-btn" href="editor">saved</a>
+            <a class="nav-btn" href="gallery">home</a>
+            <a class="nav-btn" href="edit">Edit</a>
         </nav>
-      </header>
+    </header>
 
-      
-      
+    <div class="search-an-img">
+        <label data-trans="search" for="searchThrones">search Thrones</label>
+        <input oninput="onSetFilterBy(this.value)" type="search" name="searchThrones" id="searchThrones"
+            placeholder="Search Thrones">
+    </div>
+
     <main class="container">
         <!-- Gallery Section -->
         <section class="gallery-section">
-            <h2>Image Gallery</h2>
+            <!-- <h2>Image Gallery</h2> -->
             <div class="grid-container grid" onclick="onMouseClick(event)">
                 <img src="./img/team-1.png" alt="Dragon" class="clickable" data-description="Free Dragon">
                 <img src="./img/team-2.png" alt="Knight" class="clickable" data-description="Fire Knight">
@@ -35,23 +38,38 @@
                 <img src="./img/team-4.png" alt="Storm Rider" class="clickable" data-description="Storm Rider">
                 <img src="img/team-5.jpg" alt="Shadow Assassin" class="clickable" data-description="Shadow Assassin">
                 <img src="img/team-7.png" alt="Angry Dragon" class="clickable" data-description="Angry Dragon">
-                <img src="img/team-8.png" alt="Guardian of the North" class="clickable" data-description="Guardian of the North 8">
-                <img src="img/team-9.png" alt="King of the North" class="clickable" data-description="The King of the North">
+                <img src="img/team-8.png" alt="Guardian of the North" class="clickable"
+                    data-description="Guardian of the North 8">
+                <img src="img/team-9.png" alt="King of the North" class="clickable"
+                    data-description="The King of the North">
                 <img src="img/bander-1.jpg" alt="Black Evil" class="clickable" data-description="Black Evil">
                 <img src="img/bander-2.jpg" alt="Behind the Wall" class="clickable" data-description="Behind the Wall">
-                <img src="img/bander-3.png" alt="World Burning with Evil" class="clickable" data-description="A World Burning with Evil">
-                <img src="img/bander-4.png" alt="The Greatest Queen" class="clickable" data-description="The Greatest Queen">
+                <img src="img/bander-3.png" alt="World Burning with Evil" class="clickable"
+                    data-description="A World Burning with Evil">
+                <img src="img/bander-4.png" alt="The Greatest Queen" class="clickable"
+                    data-description="The Greatest Queen">
                 <img src="img/bander-5.png" alt="The Winter" class="clickable" data-description="The Winter">
-                <img src="img/bander-6.png" alt="Important Players" class="clickable" data-description="The Important Players">
-                <img src="img/bander-7.png" alt="The Enchanted Island" class="clickable" data-description="The Enchanted Island">
-                
+                <img src="img/bander-6.png" alt="Important Players" class="clickable"
+                    data-description="The Important Players">
+                <img src="img/bander-7.png" alt="The Enchanted Island" class="clickable"
+                    data-description="The Enchanted Island">
+
                 <!-- <img src="./img/team-3.png" alt="Warrior" class="clickable" data-description="Ice Warrior"> -->
                 <!-- Add more images -->
             </div>
-            <div class="modal" id="hoverModal"></div>
-        </section>
 
-        
+        </section>
+        <div class="modal" id="hoverModal"></div>
+
+        <!-- <nav class="up-down">
+            <ul>
+                <li><i class="fa-solid fa-arrow-up"></i></li>
+                <li><i class="fa-solid fa-arrow-down"></i></li>
+            </ul>
+        </nav>  -->
+
+        <!-- <button class=""></button>
+        <button class=""></button> -->
 
         <!-- Editor Section -->
         <section class="editor-section">
@@ -82,7 +100,8 @@
 
     <script src="renderGallery.js"></script>
     <script src="controllers/galleryController.js"></script>
-    <!-- <script src="storage.service.js"></script> -->
+
+    <script src="storage.service.js"></script>
     <script src="meme_service/unpload.service.js"></script>
     <script src="meme_service/meme.service.js"></script>
     <script src="main.js"></script>

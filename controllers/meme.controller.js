@@ -5,6 +5,7 @@ let gCtx
 function onInit() {
     gElCanvas = document.getElementById('memeCanvas')
     gCtx = gElCanvas.getContext('2d')
+    addListeners()
     renderGallery()
     initMemeEditor()
     //* render
@@ -68,32 +69,77 @@ function renderMeme() {
     gCtx.strokeText(gMeme.bottomText.toUpperCase(), gElCanvas.width / 2, gElCanvas.height - 20)
 }
 
-// const hoverModal = document.getElementById('hoverModal')
+const hoverModal = document.getElementById('hoverModal')
 
-// document.querySelectorAll('.clickable').forEach(img => {
-//     img.addEventListener('mouseover', function(event) {
-//         const description = this.getAttribute('data-description')
-//         hoverModal.innerHTML = description
+document.querySelectorAll('.clickable').forEach(img => {
+    img.addEventListener('mouseover', function(event) {
 
-//         // Show the modal
-//         hoverModal.style.display = 'block'
+        const description = this.getAttribute('data-description')
+        hoverModal.innerHTML = description
 
-//         // Position the modal
-//         hoverModal.style.top = event.pageY + 15 + 'px'
-//         hoverModal.style.left = event.pageX + 15 + 'px'
-//     })
+        //* Show the modal
+        hoverModal.style.display = 'block'
 
-//     img.addEventListener('mouseout', function() {
-//         // Hide the modal when the mouse leaves the image
-//         hoverModal.style.display = 'none'
-//     })
+        //* Position the modal 
+        hoverModal.style.top = event.pageY + 15 + 'px'
+        hoverModal.style.left = event.pageX + 15 + 'px'
+    })
 
-//     img.addEventListener('mousemove', function(event) {
-//         // Update position on mouse move
-//         hoverModal.style.top = event.pageY + 15 + 'px'
-//         hoverModal.style.left = event.pageX + 15 + 'px'
-//     })
+    img.addEventListener('mouseout', function() {
+        //* Hide the modal when the mouse leaves the image
+        hoverModal.style.display = 'none'
+    })
+
+    img.addEventListener('mousemove', function(event) {
+        hoverModal.style.top = event.pageY + 15 + 'px'
+        hoverModal.style.left = event.pageX + 15 + 'px'
+    })
+})
+
+
+function onSetFilterBy(searchStr) {
+    searchStr = searchStr.toLowerCase()
+
+    const imgs = document.querySelectorAll('.clickable')
+
+    imgs.forEach(img => {
+        const description = img.getAttribute('data-description').toLowerCase()
+
+        if (description.startsWith(searchStr)) {
+            //* Show the image if it matches
+            img.style.display = 'inline'
+        } else {
+            //* Hide the image
+            img.style.display = 'none'
+        }
+    })
+}
+
+//* Handle the listeners
+function addListeners() {
+    addMouseListeners()
+    //* Listen for resize ev
+    // window.addEventListener('resize', () => {
+    //     resizeCanvas()
+    //     renderCanvas()
+    // })
+}
+
+function addMouseListeners() {
+    gElCanvas.addEventListener('mousedown', onDown)
+    gElCanvas.addEventListener('mousemove', onMove)
+    gElCanvas.addEventListener('mouseup', onUp)
+}
+
+// img.addEventListener('mouseover', function(event) {
+//     const description = this.getAttribute('data-description')
+//     hoverModal.innerHTML = description
+//     hoverModal.style.visibility = 'visible'
+
+//     hoverModal.style.top = event.pageY + 15 + 'px'
+//     hoverModal.style.left = event.pageX + 15 + 'px'
 // })
 
-
-
+// img.addEventListener('mouseout', function() {
+//     hoverModal.style.visibility = 'hidden'
+// })

@@ -19,5 +19,7 @@ async function uploadImg(imgData, onSuccess) {
 
     } catch (err) {
         console.log(err)
+        flashMsg('Image upload failed. Please try again.')
     }
 }
+
