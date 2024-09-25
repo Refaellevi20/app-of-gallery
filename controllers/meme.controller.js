@@ -10,7 +10,7 @@ function initCanvas() {
     // showEditor()
     renderGallery()
     initMemeEditor()
-    addListeners()
+    // addListeners()
     //* render
     renderMeme()
 }
@@ -119,19 +119,19 @@ function onSetFilterBy(searchStr) {
 }
 
 //* Handle the listeners
-function addListeners() {
-    addMouseListeners()
+// function addListeners() {
+//     addMouseListeners()
     //* Listen for resize ev
     // window.addEventListener('resize', () => {
     //     resizeCanvas()
     //     renderCanvas()
     // })
-}
+// }
 
 function addMouseListeners() {
-    gElCanvas.addEventListener('mousedown', onDown)
-    gElCanvas.addEventListener('mousemove', onMove)
-    gElCanvas.addEventListener('mouseup', onUp)
+    // gElCanvas.addEventListener('mousedown', onDown)
+    // gElCanvas.addEventListener('mousemove', onMove)
+    // gElCanvas.addEventListener('mouseup', onUp)
 }
 
 

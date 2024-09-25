@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between; /* Ensures space between logo and buttons */
   align-items: center; /* Vertically aligns items */
-  background-color: #f1f1f1;
+  background-color: #a8a8a8;
   padding: 20px 10px;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .header a:hover {
-  background-color: #ddd;
+  background-color: #a5a3a3;
   color: black;
 }
 

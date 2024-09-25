@@ -9,3 +9,22 @@
 } */
 
 
+/** Layout */
+.container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  /** Gallery */
+  .gallery-section {
+    background-color: aquamarine;
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+  }

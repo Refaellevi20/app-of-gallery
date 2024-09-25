@@ -1,6 +1,6 @@
 'use strict'
 
-let gClickEditor = false // Fix variable name
+let gClickEditor = false
 
 function onInit() {
     renderGallery()
@@ -27,7 +27,7 @@ function renderGallery() {
         { src: './img/bander-6.png', alt: 'Important Players', description: 'The Important Players' },
         { src: './img/bander-7.png', alt: 'The Enchanted Island', description: 'The Enchanted Island' }
     ]
-    
+
     const imgHTML = imgs.map(img => `
         <img src="${img.src}" alt="${img.alt}" class="clickable" data-description="${img.description}">
     `)
@@ -41,29 +41,46 @@ function setupGalleryEvents() {
             const imgSrc = event.target.getAttribute('src')
             const description = event.target.getAttribute('data-description')
             showEditor(imgSrc, description)
+            // onSave(imgSrc)
         }
     })
 }
 
-function showEditor(imgSrc, description) {
+function showEditor(imgSrc) {
     const clickEditor = document.querySelector('.editor-section')
     const clickSearch = document.querySelector('.search-an-img')
     const gallery = document.querySelector('.gallery-section')
-
+    const clickSave = document.querySelector('.gallery-save')
     //* Hide gallery and show editor
     gallery.style.display = 'none'
     clickSearch.style.display = 'none'
     clickEditor.style.display = 'block'
+    clickSave.style.display = 'block'
+    //* hide the editor and show the save
+    // gallery.style.display = 'none'
+    // clickSearch.style.display = 'none'
+    // clickEditor.style.display = 'none'
+    // clickSave.style.display = 'block'
 
     //* Set the image on the canvas
     setImg(imgSrc)
     renderMeme()
+}
 
-    //* update the description
-    const descriptionElement = document.createElement('p')
-    descriptionElement.textContent = description
-    clickEditor.appendChild(descriptionElement)
-    clickSearch.appendChild(descriptionElement)
+function onSave() {
+    const clickEditor = document.querySelector('.editor-section')
+    const savedMemesSection = document.querySelector('.saved-memes-section')
+
+    //* Hide the editor 
+    clickEditor.style.display = 'none'
+
+    //* Show the saved memes 
+    savedMemesSection.style.display = 'block'
+
+    const savedMemesContainer = document.querySelector('.saved-memes-container')
+    const newMeme = document.createElement('div')
+    newMeme.innerText = "your meme has been saved"
+    savedMemesContainer.appendChild(newMeme)
 }
 
 function setImg(imgSrc) {
