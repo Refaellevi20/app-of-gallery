@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="css main/styles.css"> -->
+     <link rel="stylesheet" href="staly.css">
+    <title>Image Gallery</title>
+</head>
+<body onload="onInit()">
+    <div class="container">
+        <!-- Gallery Section -->
+        <section class="gallery-section">
+            <h2>Image Gallery</h2>
+            <div class="grid-container grid" onclick="onMouseClick(event)">
+                <img src="./img/team-1.png" alt="Dragon" class="clickable" data-description="Free Dragon">
+                <img src="./img/team-2.png" alt="Knight" class="clickable" data-description="Fire Knight">
+                <img src="./img/team-3.png" alt="Warrior" class="clickable" data-description="Ice Warrior">
+                <!-- Add more images -->
+            </div>
+        </section>
+
+        <!-- Editor Section -->
+        <section class="editor-section">
+            <h2>Meme Editor</h2>
+            <div class="editor-container">
+                <input type="file" id="imageUpload" accept="image/*">
+                <canvas id="memeCanvas"></canvas>
+                <div class="controls">
+                    <input type="text" id="topText" placeholder="Top text">
+                    <input type="text" id="bottomText" placeholder="Bottom text">
+                    <input type="color" id="textColor" value="#ffffff">
+                    <button id="downloadBtn">Download Meme</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="user-msg"></div>
+    
+<!-- <script src="storage.service.js"></script> -->
+<!-- <script src="service/main.service.js"></script> -->
+<script src="main.js"></script>
+</body>
+</html>
