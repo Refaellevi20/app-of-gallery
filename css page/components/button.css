@@ -5,8 +5,68 @@
 }
 
 .saved-meme {
-    border: 1px solid #ccc;
+    border: 1px solid #f7f5f5;
     padding: 5px;
     max-width: 200px;
     text-align: center;
+}
+
+
+.font-controls.font-center {
+    background-color: rgb(37, 150, 150);
+    color: blueviolet;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.font-controls button {
+    margin: 5px;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.font-controls button i {
+    color: blueviolet;
+}
+
+.text-align-center.aline-center {
+    background-color: rgb(37, 150, 150);
+    color: blueviolet;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.aline-center button {
+    margin: 5px;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.aline-center button i {
+    color: blueviolet;
+}
+
+.select-line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; 
+}
+
+.addLine-center button {
+    background-color: #c05050;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.addLine-center button:hover {
+    background-color: #e0e0e0;
 }

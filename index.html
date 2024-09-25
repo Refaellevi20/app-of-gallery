@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="lib/animate.min.css" />
     <!-- <link rel="stylesheet" href="css main/styles.css"> -->
     <link rel="stylesheet" href="css page/style.css">
     <title>Image Gallery</title>
@@ -68,17 +70,17 @@
         </nav>  -->
 
         <!-- <button class=""></button>
-        <button class=""></button> -->
+        <button class=""></button> 
 
-        <!-- Editor Section -->
+        <-- Editor Section -->
         <section class="editor-section">
             <h2>Meme Editor</h2>
             <div class="editor-container">
                 <input type="file" id="imageUpload" accept="image/*">
                 <canvas id="memeCanvas" width="200" height="200"></canvas>
                 <div class="controls">
-                    <input type="text" class="topText" placeholder="Top text">
-                    <input type="text" class="bottomText" placeholder="Bottom text">
+                    <input type="text" class="topText" placeholder="Top text" oninput="onSetLineTxt(event)">
+                    <!-- <input type="text" class="bottomText" placeholder="Bottom text"> -->
                     <input type="color" class="stokeColor" value="#ffffff">
                     <input type="color" class="textColor" value="#ffffff">
                     <!-- <button class="btn-save" type="button" onclick="onSaveImage()">Save Image</button> -->
@@ -97,6 +99,36 @@
                 <!-- <h4>save me</h4> -->
             </div>
 
+            <div class="font-controls font-center">
+                <button title="Bigger text" onclick="onChangeFont('size+')"><i class="fa-solid fa-font"></i><i
+                        class="fa-solid fa-plus fa-plusminus"></i></button>
+                <button title="Smaller text" onclick="onChangeFont('size-')"><i class="fa-solid fa-font"></i><i
+                        class="fa-solid fa-minus fa-plusminus"></i></button>
+            </div>
+
+            <div class="text-align-center aline-center">
+                <button title="Align left" onclick="onAlign('left')" class="btn"><i
+                        class="fa-solid fa-align-left"></i></button>
+                <button title="Align center" onclick="onAlign('center')" class="btn"><i
+                        class="fa-solid fa-align-center"></i></button>
+                <button title="Align right" onclick="onAlign('right')" class="btn"><i
+                        class="fa-solid fa-align-right"></i></button>
+            </div>
+
+
+            <div class="select-line addLine-center">
+                <button title="Switch line" onclick="onSwitchLine()">
+                    <i class="fa-solid fa-arrow-down-up-across-line"></i>
+                </button>
+
+                <button class="lineAdd" title="Add line" onclick="onAddLine()">
+                    <!-- <i class="fa-regular fa-square-plus"></i> -->
+                    re5</button>
+
+                <button title="Delete line" onclick="onDeleteLine()">
+                    <i class="fa-regular fa-trash-can"></i>
+                </button>
+            </div>
         </section>
 
         <section class="saved-memes-section">
@@ -108,13 +140,13 @@
 
     </main>
 
-    
+
 
     <div class="user-msg"></div>
 
-    <script src="renderGallery.js"></script>
 
     <script src="storage.service.js"></script>
+    <script src="renderGallery.js"></script>
     <script src="meme_service/unpload.service.js"></script>
     <script src="meme_service/meme.service.js"></script>
     <script src="main.js"></script>
