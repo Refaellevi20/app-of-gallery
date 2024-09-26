@@ -125,25 +125,6 @@ button.save-btn:active {
 align-self: center;
 }
 
-/* .links-controls {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.links-controls button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 5px;
-}
-
-.links-controls a {
-    display: inline-block;
-    text-decoration: none;
-} */
-
-/* button.download {
-    align-items: center;
-} */
-
+button.download {
+    cursor: auto;
+} 

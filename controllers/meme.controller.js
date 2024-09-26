@@ -5,7 +5,7 @@ let gCtx
 let gFontSize = 30
 let gSelectedLineIdx = 0
 
-const BAR_WIDTH = 50
+let selectedFont = 'impact'
 
 function initCanvas() {
     gElCanvas = document.getElementById('memeCanvas')
@@ -43,12 +43,12 @@ function initMemeEditor() {
         const clickedLineIdx = getLineIdx(ev.offsetX, ev.offsetY)
         if (clickedLineIdx !== -1) {
             selectLine(clickedLineIdx)
-            renderMeme() 
+            renderMeme()
         }
     })
 
     window.addEventListener('keydown', (event) => {
-        if (gMeme.selectedLineIdx !== -1) { 
+        if (gMeme.selectedLineIdx !== -1) {
             if (event.key === 'ArrowUp') {
                 moveLine('up')
             } else if (event.key === 'ArrowDown') {
@@ -92,7 +92,7 @@ function getLineIdx(x, y) {
 
 
         const isInXBounds = (x >= getXPosition(line.align) - textWidth / 2 - 10) &&
-                            (x <= getXPosition(line.align) + textWidth / 2 + 10)
+            (x <= getXPosition(line.align) + textWidth / 2 + 10)
         const isInYBounds = (y >= lineY - lineHeight) && (y <= lineY + 5)
 
         if (isInXBounds && isInYBounds) {
@@ -104,7 +104,7 @@ function getLineIdx(x, y) {
 
 function selectLine(index) {
     gMeme.selectedLineIdx = index
-    document.querySelector('.topText').value = gMeme.lines[index].text 
+    document.querySelector('.topText').value = gMeme.lines[index].text
 }
 
 function handleImageUpload(event) {
@@ -122,18 +122,18 @@ function handleImageUpload(event) {
 
 function onDeleteLine() {
     const currentIndex = gMeme.selectedLineIdx
-    if (gMeme.lines.length > 1) { 
+    if (gMeme.lines.length > 1) {
         deleteLine(currentIndex)
         flashMsg('Line has been deleted!')
     } else {
         flashMsg('At least one line is required!')
-}
-renderMeme()
+    }
+    renderMeme()
 }
 
 function selectLine(index) {
     gMeme.selectedLineIdx = index
-    document.querySelector('.topText').value = gMeme.lines[index].text 
+    document.querySelector('.topText').value = gMeme.lines[index].text
 
 }
 
@@ -150,9 +150,9 @@ function onAddLine(text = 'Second Line') {
     renderMeme()
 }
 
-function onAlign(action,gSelectedLineIdx) {
+function onAlign(action, gSelectedLineIdx) {
     console.log(gSelectedLineIdx)
-    
+
     if (gMeme.selectedLineIdx === -1) return
     // console.log(gMeme.selectedLineIdx)
 
@@ -161,7 +161,7 @@ function onAlign(action,gSelectedLineIdx) {
 
     switch (action) {
         case 'left':
-            gMeme.lines[gMeme.selectedLineIdx].textAlign= 'left'
+            gMeme.lines[gMeme.selectedLineIdx].textAlign = 'left'
             // gCtx.textAlign = 'left'
             break
         case 'center':
@@ -178,10 +178,6 @@ function onAlign(action,gSelectedLineIdx) {
     renderMeme()
 }
 
-// document.querySelector('.alignLeft').addEventListener('click', () => onAlign('left'));
-// document.querySelector('.alignCenter').addEventListener('click', () => onAlign('center'));
-// document.querySelector('.alignRight').addEventListener('click', () => onAlign('right'));
-
 function onChangeFont(action) {
     switch (action) {
         case 'family':
@@ -197,14 +193,53 @@ function onChangeFont(action) {
     renderMeme()
 }
 
+
+function onFamilyFont(action) {
+    const validFonts = ['impact', 'edu', 'roboto']
+
+    if (validFonts.includes(action)) {
+        gMeme.lines[gMeme.selectedLineIdx].fontFamily = action
+    } else {
+        gMeme.lines[gMeme.selectedLineIdx].fontFamily = '   Impact';
+    }
+
+    renderMeme()
+}
+
+//! another way
+// function onFamilyFont(action) {
+//     switch (action) {
+
+//         default:
+//             gMeme.lines[gMeme.selectedLineIdx].fontFamily = 'impact'
+//             break
+//         case 'edu':
+//             gMeme.lines[gMeme.selectedLineIdx].fontFamily = action
+//             break
+//         // case 'roboto':
+//         //     gMeme.lines[gMeme.selectedLineIdx].fontFamily = action
+//         //     break
+//     }
+//     renderMeme()
+// }
+
+///////////////////////////////////
+
+function onSetLineTxt(ev) {
+    const txt = ev.target.value
+    const currentLine = gMeme.lines[gMeme.selectedLineIdx]
+    currentLine.text = txt
+    renderMeme()
+}
+
 function renderMeme() {
     if (!gMeme.img.src) return
 
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
     gCtx.drawImage(gMeme.img, 0, 0, gElCanvas.width, gElCanvas.height)
-  
+
     gMeme.lines.forEach((line, idx) => {
-        gCtx.font = `${line.size}px Impact`
+        gCtx.font = `${line.size}px ${line.fontFamily}`
         gCtx.fillStyle = line.color
         gCtx.strokeStyle = line.strokeColor
         gCtx.lineWidth = 2
@@ -227,7 +262,7 @@ function renderMeme() {
 function drawFrameAroundSelectedLine(line) {
     const textWidth = gCtx.measureText(line.text).width
     //* font size
-    const lineHeight = line.size 
+    const lineHeight = line.size
     const x = getXPosition(line.align)
     const y = line.yPosition
 
@@ -238,12 +273,12 @@ function drawFrameAroundSelectedLine(line) {
     gCtx.setLineDash([5, 5])
 
     //*padding
-    const frameX = x - textWidth / 2 - 10  
-    const frameY = y - lineHeight + 5      
+    const frameX = x - textWidth / 2 - 10
+    const frameY = y - lineHeight + 5
 
     //* Frame around the text who was selected
-    gCtx.strokeRect(frameX, frameY, textWidth + 20, lineHeight + 10) 
-   
+    gCtx.strokeRect(frameX, frameY, textWidth + 20, lineHeight + 10)
+
     gCtx.setLineDash([])
     // gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
 }
@@ -254,13 +289,9 @@ function getXPosition(alignment) {
             return 10
         case 'right':
             return gElCanvas.width - 10
-        // case 'middle':
-            // return gElCanvas.width - 20
         case 'center':
         default:
             return gElCanvas.width / 2
     }
 }
 
-// if (line.yPosition < lineHeight) line.yPosition = lineHeight
-// if (line.yPosition > gElCanvas.height - lineHeight) line.yPosition = gElCanvas.height - lineHeight

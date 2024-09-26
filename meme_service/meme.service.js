@@ -1,5 +1,7 @@
 'use strict'
 
+//! never use VAR lol
+
 let gLastLine = true
 let gYPosition = 200
 
@@ -12,7 +14,7 @@ let gMeme = {
             align: 'center',
             color: 'white',
             strokeColor: 'black',
-            // fontFamily: 'impact',
+            fontFamily: 'impact',
             yPosition: 50
         }
     ],
@@ -32,26 +34,19 @@ function addLine(text) {
         align: 'center',
         color: 'white',
         strokeColor: 'black',
+        fontFamily: 'impact',
         yPosition: gYPosition
     })
 }
-
-// let gMeme = {
-//     img: new Image(),
-//     topText: 'wetge',
-//     bottomText: '',
-//     textColor: 'white',
-//     strokeColor: 'black'
-// }
 
 function getMeme() {
     return gMeme
 }
 
-// function selectLine(index) {
-//     gMeme.selectedLineIdx = index
-//     document.querySelector('.topText').value = gMeme.lines[index].text
-// }
+function selectLine(index) {
+    gMeme.selectedLineIdx = index
+    document.querySelector('.topText').value = gMeme.lines[index].text
+}
 
 function onSwitchLine() {
     const memeLines = getMemeLines()
@@ -67,7 +62,7 @@ function deleteLine(index) {
         gMeme.selectedLineIdx = gMeme.lines.length - 1
         if (gMeme.lines.length === 0) {
             addLine('New Text')
-            flashMsg('No more lines, a new line has been added.')
+            flashMsg('no more lines, a new line has been added.')
         }
         renderMeme()
     }

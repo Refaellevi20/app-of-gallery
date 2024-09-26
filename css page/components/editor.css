@@ -8,34 +8,36 @@
 
 .search-an-img {
     display: block;
-} 
+}
 
 .saved-memes-section {
     display: none;
 }
 
-body{
+body {
     background-color: pink;
 }
 
 .editor-section {
-background-color: papayawhip;
+    background-color: papayawhip;
 }
 
-/* .gallery-save {
-    display: none;
-} */
-
-
-/* .editor-section {
-    display: block;
+.topText {
+    color: #ffffff;
+    font-family: Impact, edu, "roboto", sans-serif;
+    text-align: center;
+    width: 100%;
 }
 
-.gallery-section {
-    display: none;
+option[value="impact"] {
+    font-family: Impact;
+}
+
+option[value="edu"] {
+    font-family: "edu";
+}
+
+/* option[value="roboto"] {
+    font-family: "roboto";
 } */
 
- 
-
-
-                       /*! just for the show */
