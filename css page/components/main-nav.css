@@ -26,7 +26,7 @@
     transform: scale(1.1);     
 } */
 
-
+/* 
 #hoverModal {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.7);
@@ -34,6 +34,18 @@
     padding: 5px;
     border-radius: 4px;
     display: none; 
-    z-index: 1000; 
-}
+    z-index: 10; 
+} */
 
+.nav-btn {
+    padding: 12px;
+    font-size: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .nav-btn:hover {
+    background-color: #ddd;
+    color: black;
+  }

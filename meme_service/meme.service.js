@@ -1,5 +1,8 @@
 'use strict'
 
+let gLastLine = true
+let gYPosition = 200
+
 let gMeme = {
     img: new Image(),
     lines: [
@@ -17,6 +20,11 @@ let gMeme = {
 }
 
 function addLine(text) {
+    if(gLastLine){
+        gLastLine = false
+    }else {
+        gYPosition -= 20
+    }
     gMeme.lines.push({
         text:text,
         // text: '',
@@ -24,7 +32,7 @@ function addLine(text) {
         align: 'center',
         color: 'white',
         strokeColor: 'black',
-        yPosition: 200
+        yPosition: gYPosition
     })
 }
 

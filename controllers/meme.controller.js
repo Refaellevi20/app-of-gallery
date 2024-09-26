@@ -135,9 +135,6 @@ function selectLine(index) {
     gMeme.selectedLineIdx = index
     document.querySelector('.topText').value = gMeme.lines[index].text 
 
-    // document.querySelector('.alignLeft').disabled = (gMeme.lines[index].align === 'left')
-    // document.querySelector('.alignCenter').disabled = (gMeme.lines[index].align === 'center')
-    // document.querySelector('.alignRight').disabled = (gMeme.lines[index].align === 'right')
 }
 
 function onAddLine(text = 'Second Line') {
@@ -153,29 +150,37 @@ function onAddLine(text = 'Second Line') {
     renderMeme()
 }
 
-function onAlign(action) {
-    // if (gMeme.selectedLineIdx === -1) return
+function onAlign(action,gSelectedLineIdx) {
+    console.log(gSelectedLineIdx)
+    
+    if (gMeme.selectedLineIdx === -1) return
+    // console.log(gMeme.selectedLineIdx)
 
     const selectedLine = gMeme.lines[gMeme.selectedLineIdx]
     selectedLine.align = action
 
     switch (action) {
         case 'left':
-            gCtx.textAlign = 'left'
+            gMeme.lines[gMeme.selectedLineIdx].textAlign= 'left'
+            // gCtx.textAlign = 'left'
             break
         case 'center':
-            gCtx.textAlign = 'center'
+            gMeme.lines[gMeme.selectedLineIdx].textAlign = 'center'
             break
         case 'right':
-            gCtx.textAlign = 'right'
+            gMeme.lines[gMeme.selectedLineIdx].textAlign = 'right'
             break
         default:
-            gCtx.textAlign = 'center'
+            gMeme.lines[gMeme.selectedLineIdx].textAlign = 'center'
             break
     }
 
     renderMeme()
 }
+
+// document.querySelector('.alignLeft').addEventListener('click', () => onAlign('left'));
+// document.querySelector('.alignCenter').addEventListener('click', () => onAlign('center'));
+// document.querySelector('.alignRight').addEventListener('click', () => onAlign('right'));
 
 function onChangeFont(action) {
     switch (action) {
@@ -249,6 +254,8 @@ function getXPosition(alignment) {
             return 10
         case 'right':
             return gElCanvas.width - 10
+        // case 'middle':
+            // return gElCanvas.width - 20
         case 'center':
         default:
             return gElCanvas.width / 2
