@@ -14,7 +14,7 @@
 <body onload="onInit()">
 
     <header class="header">
-        <div class="logo">Game of Thrones</div>
+        <div class="logo">•´¯`•. Μ𝔶 мｅ𝓶ⓔ💗 .•´¯`•</div>
         <nav class="header-right">
             <button class="nav-btn" onclick="onSaveImg()">Saved</button>
             <button class="nav-btn">Home</button>
@@ -23,7 +23,7 @@
     </header>
 
     <div class="search-an-img">
-        <label data-trans="search" for="searchThrones">search Meme</label>
+        <label data-trans="search" for="searchThrones">(っ◔◡◔)っ ♥ Search Meme ♥</label>
         <input oninput="onSetFilterBy(this.value)" type="search" name="searchThrones" id="searchThrones"
             placeholder="Search Meme">
     </div>
@@ -85,17 +85,22 @@
                 <!-- <button class="btn-save" type="button" onclick="onSaveImage()">Save Image</button> -->
                 <form action="" method="POST" enctype="multipart/form-data" onsubmit="onUploadImg(event)">
                     <input name="img" id="imgData" type="hidden" />
-                    <button class="btn" type="submit">Upload to Cloudinary</button>
+                    <!-- <button class="btn" type="submit">Upload to Cloudinary</button> -->
                 </form>
                 <div class="share-container"></div>
-                <a href="#" class="btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download Image from
-                    Canvas</a>
+                <!-- <a href="#" class="btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download Image from
+                    Canvas</a> -->
             </div>
+            </div>
+
+            <div class="links-controls widget-space-between">
+                <!-- <button data-trans="save" class="save-meme-btn" onclick="onSave()">Save</button> -->
+                <button class="download" title="Download Meme"><a onclick="onDownloadMeme(this)" href="#" class="share-link" download="myMeme"><i class="fa-solid fa-download"></i></a></button>
             </div>
 
             <div class="gallery-save">
                 <button class="save-btn" onclick="onSave()">save</button>
-                <!-- <h4>save me</h4> -->
+                
             </div>
 
             <div class="font-controls font-center">

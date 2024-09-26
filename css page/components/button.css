@@ -119,13 +119,31 @@ button.save-btn:focus {
 
 button.save-btn:active {
     transform: scale(0.95); 
+} 
+
+ input#imageUpload{
+align-self: center;
 }
 
-/* 
-.save-btn b{
-background-color: #007bff
+/* .links-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.save-btn button:active {
-    transform: scale(1.05)
+.links-controls button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+}
+
+.links-controls a {
+    display: inline-block;
+    text-decoration: none;
 } */
+
+/* button.download {
+    align-items: center;
+} */
+

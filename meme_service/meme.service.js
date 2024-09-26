@@ -1,3 +1,4 @@
+'use strict'
 
 let gMeme = {
     img: new Image(),
@@ -8,6 +9,7 @@ let gMeme = {
             align: 'center',
             color: 'white',
             strokeColor: 'black',
+            // fontFamily: 'impact',
             yPosition: 50
         }
     ],

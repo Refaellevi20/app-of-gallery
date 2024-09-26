@@ -1,3 +1,6 @@
+'use strict'
+
+
 function renderGallery() {
     const gallery = document.querySelector('.grid-container')
     const imgs = [

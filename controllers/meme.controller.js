@@ -1,3 +1,5 @@
+'use strict'
+
 let gElCanvas
 let gCtx
 let gFontSize = 30
@@ -131,7 +133,11 @@ renderMeme()
 
 function selectLine(index) {
     gMeme.selectedLineIdx = index
-    document.querySelector('.topText').value = gMeme.lines[index].text // Update input value
+    document.querySelector('.topText').value = gMeme.lines[index].text 
+
+    // document.querySelector('.alignLeft').disabled = (gMeme.lines[index].align === 'left')
+    // document.querySelector('.alignCenter').disabled = (gMeme.lines[index].align === 'center')
+    // document.querySelector('.alignRight').disabled = (gMeme.lines[index].align === 'right')
 }
 
 function onAddLine(text = 'Second Line') {
@@ -148,6 +154,8 @@ function onAddLine(text = 'Second Line') {
 }
 
 function onAlign(action) {
+    // if (gMeme.selectedLineIdx === -1) return
+
     const selectedLine = gMeme.lines[gMeme.selectedLineIdx]
     selectedLine.align = action
 
@@ -183,11 +191,6 @@ function onChangeFont(action) {
     }
     renderMeme()
 }
-
-// function onAlign(action) {
-//     gCtx.textAlign = action
-//     renderMeme()
-// }
 
 function renderMeme() {
     if (!gMeme.img.src) return
@@ -252,56 +255,5 @@ function getXPosition(alignment) {
     }
 }
 
-if (line.yPosition < lineHeight) line.yPosition = lineHeight
-if (line.yPosition > gElCanvas.height - lineHeight) line.yPosition = gElCanvas.height - lineHeight
-
-
-// function drawCharts() {
-//     const barSpace = 25
-//     gStars.forEach((star, idx) => {
-//         star.x = (idx + 1) * (BAR_WIDTH + barSpace)
-//         star.y = gElCanvas.height - star.rate
-
-//         gCtx.fillStyle = star.color
-//         gCtx.fillRect(star.x, star.y, BAR_WIDTH, star.rate)
-
-//     })
-// }
-
-// function onMouseClick(ev) {
-//     // console.log('ev:', ev)
-//     const { offsetX, offsetY, clientX, clientY } = ev
-//     const clickedStar = gStars.find(star => {
-//         return (
-//             offsetX >= star.x && offsetX <= star.x + BAR_WIDTH &&
-//             offsetY >= star.y
-//         )
-//     })
-//     // console.log('clickedStar:', clickedStar)
-//     if (clickedStar) {
-//         openModal(clickedStar.name, clickedStar.rate, clientX, clientY)
-//     } else {
-//         closeModal()
-//     }
-// }
-
-// function openModal(starName, starRate, x, y) {
-//     const elModal = document.querySelector('.modal')
-//     elModal.innerText = `Star: ${starName} has ${starRate} rating`
-//     elModal.hidden = false
-//     elModal.style.top = y + 'px'
-//     elModal.style.left = x + 'px'
-// }
-
-// function closeModal() {
-//     document.querySelector('.modal').hidden = true
-// }
-
-// function getRandomColor() {
-//     const letters = '0123456789ABCDEF'
-//     let color = '#'
-//     for (var i = 0 i < 6 i++) {
-//         color += letters[Math.floor(Math.random() * 16)]
-//     }
-//     return color
-// }
+// if (line.yPosition < lineHeight) line.yPosition = lineHeight
+// if (line.yPosition > gElCanvas.height - lineHeight) line.yPosition = gElCanvas.height - lineHeight

@@ -1,3 +1,5 @@
+'use strict'
+
 function onMouseClick(event) {
     if (event.target.classList.contains('clickable')) {
         const description = event.target.getAttribute('data-description')
@@ -65,8 +67,7 @@ function onUploadImg(ev) {
         // console.log('uploadedImgUrl:', uploadedImgUrl)
         const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
         document.querySelector('.share-container').innerHTML = `
-            <a href="${uploadedImgUrl}">Image Url</a>
-            <p>Image url: ${uploadedImgUrl}</p>
+           
            
             <button class="btn-facebook" target="_blank" onclick="onUploadToFB('${encodedUploadedImgUrl}')">
                 Share on Facebook  
@@ -76,3 +77,5 @@ function onUploadImg(ev) {
 
     uploadImg(canvasData, onSuccess)
 }
+{/* <a href="${uploadedImgUrl}">Image Url</a>
+<p>Image url: ${uploadedImgUrl}</p> */}
