@@ -3,22 +3,12 @@ let gMeme = {
     img: new Image(),
     lines: [
         {
-            
             text: 'Top Text',
             size: 30,
             align: 'center',
             color: 'white',
             strokeColor: 'black',
-            yPosition: 50 
-        },
-        {
-           
-            text: 'Bottom Text',
-            size: 30,
-            align: 'center',
-            color: 'white',
-            strokeColor: 'black',
-            yPosition: 400 
+            yPosition: 50
         }
     ],
     selectedLineIdx: 0,
@@ -26,10 +16,13 @@ let gMeme = {
 
 function addLine(text) {
     gMeme.lines.push({
-        text: text,
+        text:text,
+        // text: '',
         size: gFontSize,
         align: 'center',
-        color: document.querySelector('.textColor').value
+        color: 'white',
+        strokeColor: 'black',
+        yPosition: 200
     })
 }
 
@@ -45,10 +38,30 @@ function getMeme() {
     return gMeme
 }
 
-// function setLineTxt(topText, bottomText) {
-//     gMeme.topText = topText
-//     gMeme.bottomText = bottomText
+// function selectLine(index) {
+//     gMeme.selectedLineIdx = index
+//     document.querySelector('.topText').value = gMeme.lines[index].text
 // }
+
+function onSwitchLine() {
+    const memeLines = getMemeLines()
+    const newIndex = (gMeme.selectedLineIdx + 1) % memeLines.length
+    selectLine(newIndex)
+    renderMeme()
+}
+
+
+function deleteLine(index) {
+    gMeme.lines.splice(index, 1)
+    if (gMeme.selectedLineIdx >= gMeme.lines.length) {
+        gMeme.selectedLineIdx = gMeme.lines.length - 1
+        if (gMeme.lines.length === 0) {
+            addLine('New Text')
+            flashMsg('No more lines, a new line has been added.')
+        }
+        renderMeme()
+    }
+}
 
 function setImg(imgSrc) {
     gMeme.img.src = imgSrc
@@ -76,6 +89,6 @@ function drawRect(line) {
     const y = line.yPosition
 
     gCtx.strokeStyle = 'blue'
-    gCtx.strokeRect(x - textWidth / 2 - 10, y - line.size, textWidth + 20, line.size + 10);
+    gCtx.strokeRect(x - textWidth / 2 - 10, y - line.size, textWidth + 25, line.size + 10)
 }
 

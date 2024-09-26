@@ -53,6 +53,7 @@
 }
 
 .select-line {
+    /* background-color: #0056b3; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,7 +62,7 @@
 
 .addLine-center button {
     background-color: #c05050;
-    border: 1px solid #ccc;
+    border: 1px solid #c0aeae;
     padding: 10px;
     font-size: 16px;
     cursor: pointer;
@@ -70,3 +71,61 @@
 .addLine-center button:hover {
     background-color: #e0e0e0;
 }
+
+.moving-lines {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin: 20px 0; 
+}
+
+.moving-lines button {
+    background-color: #007bff; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    padding: 10px 15px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+    margin: 0 5px; 
+}
+
+.moving-lines button:hover {
+    background-color: #0056b3;
+}
+
+.moving-lines button:focus {
+    outline: none; 
+}
+
+.moving-lines button:active {
+    transform: scale(0.95); 
+}
+
+
+
+button.save-btn {
+    background-color: #f83fdf; ;
+}
+
+button.save-btn:hover {
+    background-color: #007bff; ;
+}
+
+button.save-btn:focus {
+    outline: none; 
+}
+
+button.save-btn:active {
+    transform: scale(0.95); 
+}
+
+/* 
+.save-btn b{
+background-color: #007bff
+}
+
+.save-btn button:active {
+    transform: scale(1.05)
+} */

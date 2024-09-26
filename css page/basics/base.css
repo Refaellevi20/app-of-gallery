@@ -50,7 +50,8 @@ canvas {
   gap: 10px;
 }
 
-input[type="text"],
+
+/* input[type="text"],
 input[type="color"],
 button {
   padding: 10px;
@@ -58,6 +59,22 @@ button {
   margin: 5px;
   width: 100%;
   max-width: 300px;
+} */
+
+button {
+  padding: 10px;
+  font-size: 16px;
+  margin: 5px;
+  width: 100%;
+  max-width: 300px;
+} 
+
+input[type="color"] {
+  cursor: pointer;
+  border: none;
+  width: 24px;
+  height: 24px;
+  padding: 0;
 }
 
 .user-msg {
@@ -96,9 +113,26 @@ h3 {
   margin: 2.5em auto 1em;
 }
 
+/* .stokeColor {
+  margin-top: -10px;
+} */
 
 
 
-.option-btn {
-  background-color: rgb(190, 39, 196);
+.color-controls {
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start; 
+  align-items: center;
+}
+
+.color-group {
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start; 
+  align-items: center;
+}
+
+.fillColor, .stokeColor {
+  margin-top: 5px; /* Adds some space between the label and the input */
 }

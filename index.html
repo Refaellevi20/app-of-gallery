@@ -23,9 +23,9 @@
     </header>
 
     <div class="search-an-img">
-        <label data-trans="search" for="searchThrones">search Thrones</label>
+        <label data-trans="search" for="searchThrones">search Meme</label>
         <input oninput="onSetFilterBy(this.value)" type="search" name="searchThrones" id="searchThrones"
-            placeholder="Search Thrones">
+            placeholder="Search Meme">
     </div>
 
     <main class="container">
@@ -33,26 +33,25 @@
         <section class="gallery-section">
             <!-- <h2>Image Gallery</h2> -->
             <div class="grid-container grid" onclick="onMouseClick(event)">
-                <img src="./img/team-1.png" alt="Dragon" class="clickable" data-description="Free Dragon">
-                <img src="./img/team-2.png" alt="Knight" class="clickable" data-description="Fire Knight">
-                <img src="./img/team-3.png" alt="Ice Warrior" class="clickable" data-description="Ice Warrior">
-                <img src="./img/team-4.png" alt="Storm Rider" class="clickable" data-description="Storm Rider">
-                <img src="img/team-5.jpg" alt="Shadow Assassin" class="clickable" data-description="Shadow Assassin">
-                <img src="img/team-7.png" alt="Angry Dragon" class="clickable" data-description="Angry Dragon">
-                <img src="img/team-8.png" alt="Guardian of the North" class="clickable"
+                <img src="./img/2.jpg" alt="Dragon" class="clickable" data-description="Free Dragon">
+                <img src="./img/003.jpg" alt="Knight" class="clickable" data-description="Fire Knight">
+                <img src="./img/004.jpg" alt="Ice Warrior" class="clickable" data-description="Ice Warrior">
+                <img src="./img/005.jpg" alt="Storm Rider" class="clickable" data-description="Storm Rider">
+                <img src="img/8.jpg" alt="Shadow Assassin" class="clickable" data-description="Shadow Assassin">
+                <img src="img/5.jpg" alt="Angry Dragon" class="clickable" data-description="Angry Dragon">
+                <img src="img/006.jpg" alt="Guardian of the North" class="clickable"
                     data-description="Guardian of the North 8">
-                <img src="img/team-9.png" alt="King of the North" class="clickable"
-                    data-description="The King of the North">
-                <img src="img/bander-1.jpg" alt="Black Evil" class="clickable" data-description="Black Evil">
-                <img src="img/bander-2.jpg" alt="Behind the Wall" class="clickable" data-description="Behind the Wall">
-                <img src="img/bander-3.png" alt="World Burning with Evil" class="clickable"
+                <img src="img/9.jpg" alt="King of the North" class="clickable" data-description="The King of the North">
+                <img src="img/12.jpg" alt="Black Evil" class="clickable" data-description="Black Evil">
+                <img src="img/19.jpg" alt="Behind the Wall" class="clickable" data-description="Behind the Wall">
+                <img src="img/leo.jpg" alt="World Burning with Evil" class="clickable"
                     data-description="A World Burning with Evil">
-                <img src="img/bander-4.png" alt="The Greatest Queen" class="clickable"
+                <img src="img/meme1.jpg" alt="The Greatest Queen" class="clickable"
                     data-description="The Greatest Queen">
-                <img src="img/bander-5.png" alt="The Winter" class="clickable" data-description="The Winter">
-                <img src="img/bander-6.png" alt="Important Players" class="clickable"
+                <img src="img/Oprah-You-Get-A.jpg" alt="The Winter" class="clickable" data-description="The Winter">
+                <img src="img/patrick.jpg" alt="Important Players" class="clickable"
                     data-description="The Important Players">
-                <img src="img/bander-7.png" alt="The Enchanted Island" class="clickable"
+                <img src="img/X-Everywhere.jpg" alt="The Enchanted Island" class="clickable"
                     data-description="The Enchanted Island">
 
                 <!-- <img src="./img/team-3.png" alt="Warrior" class="clickable" data-description="Ice Warrior"> -->
@@ -62,36 +61,36 @@
         </section>
         <div class="modal" id="hoverModal"></div>
 
-        <!-- <nav class="up-down">
-            <ul>
-                <li><i class="fa-solid fa-arrow-up"></i></li>
-                <li><i class="fa-solid fa-arrow-down"></i></li>
-            </ul>
-        </nav>  -->
+    
 
-        <!-- <button class=""></button>
-        <button class=""></button> 
-
-        <-- Editor Section -->
+        <!-- Editor Section -->
         <section class="editor-section">
             <h2>Meme Editor</h2>
             <div class="editor-container">
                 <input type="file" id="imageUpload" accept="image/*">
-                <canvas id="memeCanvas" width="200" height="200"></canvas>
+                <canvas id="memeCanvas" width="200" height="200" onclick="onMouseClick(event)"></canvas>
                 <div class="controls">
                     <input type="text" class="topText" placeholder="Top text" oninput="onSetLineTxt(event)">
+                    <!-- <input class="text-gone" type="text" oninput="onInputTextChange(event)"> -->
                     <!-- <input type="text" class="bottomText" placeholder="Bottom text"> -->
-                    <input type="color" class="stokeColor" value="#ffffff">
+                    <div class="color-controls">
+                        <label for="fillColor">Fill Color</label>
+                        <input type="color" class="stokeColor" value="#ffffff">
+                    </div>
+                    <div class="color-group">
+
+                    <label for="stokeColor">Stroke Color</label>
                     <input type="color" class="textColor" value="#ffffff">
-                    <!-- <button class="btn-save" type="button" onclick="onSaveImage()">Save Image</button> -->
-                    <form action="" method="POST" enctype="multipart/form-data" onsubmit="onUploadImg(event)">
-                        <input name="img" id="imgData" type="hidden" />
-                        <button class="btn" type="submit">Upload to Cloudinary</button>
-                    </form>
-                    <div class="share-container"></div>
-                    <a href="#" class="btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download Image from
-                        Canvas</a>
                 </div>
+                <!-- <button class="btn-save" type="button" onclick="onSaveImage()">Save Image</button> -->
+                <form action="" method="POST" enctype="multipart/form-data" onsubmit="onUploadImg(event)">
+                    <input name="img" id="imgData" type="hidden" />
+                    <button class="btn" type="submit">Upload to Cloudinary</button>
+                </form>
+                <div class="share-container"></div>
+                <a href="#" class="btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download Image from
+                    Canvas</a>
+            </div>
             </div>
 
             <div class="gallery-save">
@@ -107,29 +106,50 @@
             </div>
 
             <div class="text-align-center aline-center">
-                <button title="Align left" onclick="onAlign('left')" class="btn"><i
-                        class="fa-solid fa-align-left"></i></button>
-                <button title="Align center" onclick="onAlign('center')" class="btn"><i
-                        class="fa-solid fa-align-center"></i></button>
-                <button title="Align right" onclick="onAlign('right')" class="btn"><i
-                        class="fa-solid fa-align-right"></i></button>
+                <button title="Align left" onclick="onAlign('left')" class="btn">
+                    <i class="fa-solid fa-align-left"></i>
+                </button>
+                <button title="Align center" onclick="onAlign('center')" class="btn">
+                    <i class="fa-solid fa-align-center"></i>
+                </button>
+                <button title="Align right" onclick="onAlign('right')" class="btn">
+                    <i class="fa-solid fa-align-right"></i>
+                </button>
             </div>
 
 
             <div class="select-line addLine-center">
-                <button title="Switch line" onclick="onSwitchLine()">
-                    <i class="fa-solid fa-arrow-down-up-across-line"></i>
-                </button>
+
+                <button title="Switch line" onclick="onSwitchLine()">+text-</button>
+
+
+                <!-- <i class="fa-solid fa-arrow-down-up-across-line"></i> -->
+                <!-- </button> -->
 
                 <button class="lineAdd" title="Add line" onclick="onAddLine()">
-                    <!-- <i class="fa-regular fa-square-plus"></i> -->
-                    re5</button>
+                    <i class="fa-regular fa-square-plus"></i>
+                </button>
 
                 <button title="Delete line" onclick="onDeleteLine()">
                     <i class="fa-regular fa-trash-can"></i>
                 </button>
+
             </div>
+
+            <div class="moving-lines">
+                <button title="down line" onclick="onDownLine()">
+                    <i class="fa-solid fa-arrow-down"></i>
+                </button>
+
+                <button title="up line" onclick="onUpLine()">
+                    <i class="fa-solid fa-arrow-up"></i>
+                </button>
+            </div>
+
+
         </section>
+
+        <div class="modal" hidden></div>
 
         <section class="saved-memes-section">
             <h2>Saved Memes</h2>
