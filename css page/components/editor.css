@@ -10,6 +10,13 @@
     display: block;
 }
 
+/* footer a {
+    display: inline-block;
+    transform: translateY(10px);
+    opacity: 0.5; 
+    transition: transform 0.3s ease, opacity 0.3s ease
+} */
+
 .saved-memes-section {
     display: none;
 }

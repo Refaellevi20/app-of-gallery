@@ -1,0 +1,41 @@
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #ece258;
+    text-align: center;
+    padding: 2px 0;
+    border-top: 5px solid #333; 
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2); 
+    font-family: 'Arial', sans-serif; 
+    font-size: 18px; 
+    color: #333; 
+}
+
+footer a {
+    text-decoration: none; 
+    color: #0073e6; 
+    font-weight: bold;
+}
+
+@keyframes hoverEffect {
+    0% {
+      color: #0073e6;
+      text-shadow: none;
+      transform: scale(1);
+    }
+    50% {
+      color: #f1785c;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      transform: scale(1.1);
+    }
+    100% {
+      color: #0073e6;
+      text-shadow: none;
+      transform: scale(1);
+    }
+  }
+  
+  footer a:hover {
+    animation: hoverEffect 0.9s ease-in-out forwards;
+  }
