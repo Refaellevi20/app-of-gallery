@@ -123,38 +123,3 @@ function prevPage() {
 }
 
 
-// function _createEmojis() {
-//     for (let i = 128512; i < 128591; i++) {
-//         gEmojis.push(`${i}`)
-//     }
-//     for (let i = 129296; i < 129356; i++) {
-//         gEmojis.push(`${i}`)
-//     }
-// }
-
-// function nextPage() {
-//     gEmojiPageIdx++
-//     if (gEmojiPageIdx * PAGE_SIZE >= gEmojis.length) {
-//         gEmojiPageIdx = 0
-//     }
-//     return gEmojiPageIdx
-// }
-
-// function prevPage() {
-//     gEmojiPageIdx--
-//     if (gEmojiPageIdx * PAGE_SIZE < 0) {
-//         gEmojiPageIdx = Math.floor(gEmojis.length / PAGE_SIZE)
-//     }
-//     return gEmojiPageIdx
-// }
-
-
-// function getEmojis() {
-//     var emojis = gEmojis
-//     var startIdx = gEmojiPageIdx * PAGE_SIZE
-//     return emojis.slice(startIdx, startIdx + PAGE_SIZE)
-// }
-
-// function setTexDrag(isDrag) {
-//     gMeme.isDrag = isDrag
-// }

@@ -22,7 +22,6 @@ function initCanvas() {
     initMemeEditor()
     renderEmojis()
     renderMeme()
-    // drawCharts()
 }
 
 function initMemeEditor() {
@@ -290,13 +289,6 @@ function onFamilyFont(action) {
 // }
 
 ///////////////////////////////////
-
-// function onSetLineTxt(ev) {
-//     const txt = ev.target.value
-//     const currentLine = gMeme.lines[gMeme.selectedLineIdx]
-//     currentLine.text = txt
-//     renderMeme()
-// }
 
 function renderMeme() {
     if (!gMeme.img.src) return
