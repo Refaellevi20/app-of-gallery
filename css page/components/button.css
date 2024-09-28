@@ -13,7 +13,7 @@
 
 
 .font-controls.font-center {
-    background-color: rgb(37, 150, 150);
+    background-color: rgb(187, 241, 241);
     color: blueviolet;
     padding: 10px;
     display: flex;
@@ -29,7 +29,7 @@
 }
 
 .font-controls button i {
-    color: blueviolet;
+    color: rgb(223, 86, 32);
 }
 
 .text-align-center.aline-center {
@@ -57,7 +57,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px; 
+    gap: 10px;
 }
 
 .addLine-center button {
@@ -73,22 +73,22 @@
 }
 
 .moving-lines {
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    margin: 20px 0; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
 }
 
 .moving-lines button {
-    background-color: #007bff; 
-    color: white; 
-    border: none; 
-    border-radius: 5px; 
-    padding: 10px 15px; 
-    font-size: 16px; 
-    cursor: pointer; 
-    transition: background-color 0.3s ease; 
-    margin: 0 5px; 
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0 5px;
 }
 
 .moving-lines button:hover {
@@ -96,35 +96,84 @@
 }
 
 .moving-lines button:focus {
-    outline: none; 
+    outline: none;
 }
 
 .moving-lines button:active {
-    transform: scale(0.95); 
+    transform: scale(0.95);
 }
 
-
-
 button.save-btn {
-    background-color: #f83fdf; ;
+    background-color: #f83fdf;
+    ;
 }
 
 button.save-btn:hover {
-    background-color: #007bff; ;
+    background-color: #007bff;
+    ;
 }
 
 button.save-btn:focus {
-    outline: none; 
+    outline: none;
 }
 
 button.save-btn:active {
-    transform: scale(0.95); 
-} 
+    transform: scale(0.95);
+}
 
- input#imageUpload{
-align-self: center;
+input#imageUpload {
+    align-self: center;
 }
 
 button.download {
     cursor: auto;
-} 
+}
+
+.gallery-save {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.save-btn {
+    font-size: 18px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    flex-grow: 1;
+    max-width: 150px;
+}
+
+.save-btn:hover {
+    background-color: #45a049;
+}
+
+.line-down,
+.line-up {
+    font-size: 14px;
+    padding: 8px;
+    background-color: aqua;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.line-down i,
+.line-up i {
+    font-size: 16px;
+}
+
+.line-down:hover,
+.line-up:hover {
+    background-color: #88e649;
+}
+
+.line-down,
+.line-up {
+    width: 40px;
+    text-align: center;
+}

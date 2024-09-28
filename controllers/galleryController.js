@@ -82,7 +82,7 @@ function setImg(imgSrc) {
 
 function saveMemeImage() {
     const canvas = document.getElementById('memeCanvas')
-    const imgData = canvas.toDataURL("img/png")
+    const imgData = canvas.toDataURL("img/jpg")
 
     const meme = {
         imgData: imgData,
@@ -109,3 +109,40 @@ function renderSavedMemes() {
     `)
     savedMemesContainer.innerHTML = memesHTML.join('')
 }
+
+function showGallery() {
+    document.querySelector('.gallery-section').style.display = 'block';
+    document.querySelector('.saved-memes-section').style.display = 'none';
+}
+
+function showSaved() {
+    document.querySelector('.gallery-section').style.display = 'none';
+    document.querySelector('.saved-memes-section').style.display = 'block';
+}
+
+// const hoverModal = document.getElementById('hoverModal')
+
+// document.querySelectorAll('.clickable').forEach(img => {
+//     img.addEventListener('mouseover', function (event) {
+
+//         const description = this.getAttribute('data-description')
+//         hoverModal.innerHTML = description
+
+//         //* Show the modal
+//         hoverModal.style.display = 'block'
+
+//         //* Position the modal 
+//         hoverModal.style.top = event.pageY + 15 + 'px'
+//         hoverModal.style.left = event.pageX + 15 + 'px'
+//     })
+
+//     img.addEventListener('mouseout', function () {
+//         //* Hide the modal when the mouse leaves the image
+//         hoverModal.style.display = 'none'
+//     })
+
+//     img.addEventListener('mousemove', function (event) {
+//         hoverModal.style.top = event.pageY + 15 + 'px'
+//         hoverModal.style.left = event.pageX + 15 + 'px'
+//     })
+// })

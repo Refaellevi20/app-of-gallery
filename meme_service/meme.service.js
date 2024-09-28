@@ -5,6 +5,12 @@
 let gLastLine = true
 let gYPosition = 200
 
+let gEmojis = []
+let gEmojiPageIdx = 0
+const PAGE_SIZE = 20
+
+_createEmojis()
+
 let gMeme = {
     img: new Image(),
     lines: [
@@ -48,14 +54,6 @@ function selectLine(index) {
     document.querySelector('.topText').value = gMeme.lines[index].text
 }
 
-function onSwitchLine() {
-    const memeLines = getMemeLines()
-    const newIndex = (gMeme.selectedLineIdx + 1) % memeLines.length
-    selectLine(newIndex)
-    renderMeme()
-}
-
-
 function deleteLine(index) {
     gMeme.lines.splice(index, 1)
     if (gMeme.selectedLineIdx >= gMeme.lines.length) {
@@ -87,7 +85,6 @@ function getMemeLines() {
     return gMeme.lines
 }
 
-
 function drawRect(line) {
     const textWidth = gCtx.measureText(line.text).width
     const x = getXPosition(line.align)
@@ -97,3 +94,67 @@ function drawRect(line) {
     gCtx.strokeRect(x - textWidth / 2 - 10, y - line.size, textWidth + 25, line.size + 10)
 }
 
+//* Create emojis 
+function _createEmojis() {
+    for (let i = 128512; i < 128591; i++) {
+        gEmojis.push(String.fromCodePoint(i))
+    }
+    for (let i = 129296; i < 129356; i++) {
+        gEmojis.push(String.fromCodePoint(i))
+    }
+}
+
+//* Get the next page of emojis
+function nextPage() {
+    gEmojiPageIdx++
+    if (gEmojiPageIdx * PAGE_SIZE >= gEmojis.length) {
+        gEmojiPageIdx = 0
+    }
+    return gEmojiPageIdx
+}
+
+//* Get the previous page of emojis
+function prevPage() {
+    gEmojiPageIdx--
+    if (gEmojiPageIdx < 0) {
+        gEmojiPageIdx = Math.floor(gEmojis.length / PAGE_SIZE)
+    }
+    return gEmojiPageIdx
+}
+
+
+// function _createEmojis() {
+//     for (let i = 128512; i < 128591; i++) {
+//         gEmojis.push(`${i}`)
+//     }
+//     for (let i = 129296; i < 129356; i++) {
+//         gEmojis.push(`${i}`)
+//     }
+// }
+
+// function nextPage() {
+//     gEmojiPageIdx++
+//     if (gEmojiPageIdx * PAGE_SIZE >= gEmojis.length) {
+//         gEmojiPageIdx = 0
+//     }
+//     return gEmojiPageIdx
+// }
+
+// function prevPage() {
+//     gEmojiPageIdx--
+//     if (gEmojiPageIdx * PAGE_SIZE < 0) {
+//         gEmojiPageIdx = Math.floor(gEmojis.length / PAGE_SIZE)
+//     }
+//     return gEmojiPageIdx
+// }
+
+
+// function getEmojis() {
+//     var emojis = gEmojis
+//     var startIdx = gEmojiPageIdx * PAGE_SIZE
+//     return emojis.slice(startIdx, startIdx + PAGE_SIZE)
+// }
+
+// function setTexDrag(isDrag) {
+//     gMeme.isDrag = isDrag
+// }

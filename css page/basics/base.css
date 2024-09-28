@@ -8,13 +8,13 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
   margin: 0;
- 
+
   text-align: center;
 }
 
-/* h2 {
-  margin-bottom: 20px;
-} */
+html {
+  scroll-behavior: smooth;
+}
 
 img.clickable {
   width: 100%;
@@ -67,7 +67,7 @@ button {
   margin: 5px;
   width: 100%;
   max-width: 300px;
-} 
+}
 
 input[type="color"] {
   cursor: pointer;
@@ -79,18 +79,18 @@ input[type="color"] {
 
 .user-msg {
   position: fixed;
-  top: -100px; 
-  left: 50%; 
-  transform: translateX(-50%); 
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
 
   padding: 10px;
   background-color: #47e4f0;
 
-  transition: top 0.5s; 
+  transition: top 0.5s;
 }
 
 .user-msg.open {
-  top: 10px; 
+  top: 10px;
 }
 
 
@@ -123,20 +123,21 @@ img.clickable:hover {
 
 .color-controls {
   display: flex;
-  flex-direction: column; 
-  align-items: flex-start; 
+  flex-direction: column;
+  align-items: flex-start;
   align-items: center;
 }
 
 .color-group {
   display: flex;
-  flex-direction: column; 
-  align-items: flex-start; 
+  flex-direction: column;
+  align-items: flex-start;
   align-items: center;
 }
 
-.fillColor, .stokeColor {
-  margin-top: 5px; 
+.fillColor,
+.stokeColor {
+  margin-top: 5px;
 }
 
 input {
@@ -158,7 +159,7 @@ input#imageUpload {
   font-size: 16px;
   text-align: center;
   transition: background-color 0.3s ease;
-  align-self: center; 
+  align-self: center;
 }
 
 
@@ -166,3 +167,17 @@ input#imageUpload {
   background-color: #45a049;
 }
 
+
+.font-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.font-controls label {
+  margin-right: 10px;
+}
+
+.fontFamily {
+  margin-right: 10px;
+}

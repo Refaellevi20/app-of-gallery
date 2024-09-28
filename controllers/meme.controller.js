@@ -4,8 +4,14 @@ let gElCanvas
 let gCtx
 let gFontSize = 30
 let gSelectedLineIdx = 0
+let isDragging = false
+let gStartY = 0
+let gStartX = 0
+// let gSelectedEmoji = ''
 
 let selectedFont = 'impact'
+
+const TOUCH_EVS = ['touchmove', 'touchstart', 'touchend']
 
 function initCanvas() {
     gElCanvas = document.getElementById('memeCanvas')
@@ -14,6 +20,7 @@ function initCanvas() {
     gCtx.textAlign = 'center'
     renderGallery()
     initMemeEditor()
+    renderEmojis()
     renderMeme()
     // drawCharts()
 }
@@ -44,8 +51,18 @@ function initMemeEditor() {
         if (clickedLineIdx !== -1) {
             selectLine(clickedLineIdx)
             renderMeme()
+            // renderEmojis()
         }
     })
+
+      //* Adding dragging event listeners
+      gElCanvas.addEventListener('mousedown', onDown)
+      gElCanvas.addEventListener('mousemove', onMouseMove)
+      gElCanvas.addEventListener('mouseup', onMouseUp)
+  
+      gElCanvas.addEventListener('touchstart', onDown)
+      gElCanvas.addEventListener('touchmove', onMouseMove)
+      gElCanvas.addEventListener('touchend', onMouseUp)
 
     window.addEventListener('keydown', (event) => {
         if (gMeme.selectedLineIdx !== -1) {
@@ -56,6 +73,71 @@ function initMemeEditor() {
             }
         }
     })
+    // renderEmojis()
+}
+
+function onMouseMove(ev) {
+    const pos = getEvPos(ev)
+
+    if (isDragging) {
+        const selectedLine = gMeme.lines[gMeme.selectedLineIdx]
+        selectedLine.yPosition = pos.y - gStartY
+        renderMeme()
+    } 
+}
+
+function onDown(ev) {
+    //* Get the ev pos from mouse or touch
+    const pos = getEvPos(ev)
+
+    // Check if a line was clicked, otherwise check for the circle
+    const clickedLineIdx = getLineIdx(pos.x, pos.y)
+    if (clickedLineIdx !== -1) {
+        selectLine(clickedLineIdx)
+        isDragging = true
+        gStartY = pos.y - gMeme.lines[gMeme.selectedLineIdx].yPosition
+        document.body.style.cursor = 'grabbing'
+        return
+    }
+}
+
+function onMouseUp() {
+    isDragging = false
+    setTexDrag(false) 
+    document.body.style.cursor = 'default'
+}
+
+function getEvPos(ev) {
+
+    let pos = {
+        x: ev.offsetX,
+        y: ev.offsetY,
+    }
+
+    if (TOUCH_EVS.includes(ev.type)) {
+        //* Prevent triggering the mouse screen dragging event
+        ev.preventDefault()
+        //* Gets the first touch point
+        ev = ev.changedTouches[0]
+        //* Calc the right pos according to the touch screen
+        pos = {
+            x: ev.clientX - ev.target.offsetLeft - ev.target.clientLeft,
+            y: ev.clientY - ev.target.offsetTop - ev.target.clientTop,
+        }
+    }
+    return pos
+}
+
+function onDownLine() {
+    if (gMeme.selectedLineIdx !== -1) {
+        moveLine('down')
+    }
+}
+
+function onUpLine() {
+    if (gMeme.selectedLineIdx !== -1) {
+        moveLine('up')
+    }
 }
 
 function moveLine(direction) {
@@ -71,18 +153,13 @@ function moveLine(direction) {
     renderMeme()
 }
 
-function onDownLine() {
-    if (gMeme.selectedLineIdx !== -1) {
-        moveLine('down')
-    }
+function onSwitchLine() {
+    const memeLines = getMemeLines()
+    const newIndex = (gMeme.selectedLineIdx + 1) % memeLines.length
+    selectLine(newIndex)
+    renderMeme()
 }
-
-function onUpLine() {
-    if (gMeme.selectedLineIdx !== -1) {
-        moveLine('up')
-    }
-}
-
+//
 function getLineIdx(x, y) {
     for (let i = 0; i < gMeme.lines.length; i++) {
         const line = gMeme.lines[i]
@@ -100,11 +177,6 @@ function getLineIdx(x, y) {
         }
     }
     return -1
-}
-
-function selectLine(index) {
-    gMeme.selectedLineIdx = index
-    document.querySelector('.topText').value = gMeme.lines[index].text
 }
 
 function handleImageUpload(event) {
@@ -129,12 +201,6 @@ function onDeleteLine() {
         flashMsg('At least one line is required!')
     }
     renderMeme()
-}
-
-function selectLine(index) {
-    gMeme.selectedLineIdx = index
-    document.querySelector('.topText').value = gMeme.lines[index].text
-
 }
 
 function onAddLine(text = 'Second Line') {
@@ -225,12 +291,12 @@ function onFamilyFont(action) {
 
 ///////////////////////////////////
 
-function onSetLineTxt(ev) {
-    const txt = ev.target.value
-    const currentLine = gMeme.lines[gMeme.selectedLineIdx]
-    currentLine.text = txt
-    renderMeme()
-}
+// function onSetLineTxt(ev) {
+//     const txt = ev.target.value
+//     const currentLine = gMeme.lines[gMeme.selectedLineIdx]
+//     currentLine.text = txt
+//     renderMeme()
+// }
 
 function renderMeme() {
     if (!gMeme.img.src) return
@@ -294,4 +360,73 @@ function getXPosition(alignment) {
             return gElCanvas.width / 2
     }
 }
+
+function onMove(ev) {
+    const { isDrag } = getCircle()
+    if (!isDrag) return
+
+    const pos = getEvPos(ev)
+    //* Calc the delta, the diff we moved
+    const dx = pos.x - gLastPos.x
+    const dy = pos.y - gLastPos.y
+    moveCircle(dx, dy)
+    //* Save the last pos so we will remember where we`ve been and move accordingly
+    gLastPos = pos
+    //* The canvas (along with the circle) is rendered again after every move
+    renderMeme()
+    // renderCircle()
+}
+
+function onUp() {
+    setTexDrag(false)
+    document.body.style.cursor = 'grab'
+}
+
+//* Get the current page of emojis
+function getEmojis() {
+    let startIdx = gEmojiPageIdx * PAGE_SIZE
+    return gEmojis.slice(startIdx, startIdx + PAGE_SIZE)
+}
+
+//* Render emojis
+function renderEmojis() {
+    const emojis = getEmojis()
+    const elEmojisModule = document.querySelector('.emojis-module')
+    const strHTMLs = emojis.map(emoji => 
+        `<button onclick="onEmojiClick(event, '${emoji}')" class="emoji-item">${emoji}</button>`
+    )
+    elEmojisModule.innerHTML = strHTMLs.join('')
+}
+
+//* Toggle emoji
+function onEmojiSelect(elEmoji) {
+    const elEmojisModule = elEmoji.querySelector('.module-wrapper')
+    elEmojisModule.classList.toggle('open')
+}
+
+//* Handle emoji click and prevent event 
+function onEmojiClick(ev, emoji) {
+    ev.stopPropagation()
+
+    onAddLine(emoji)
+}
+
+//* Handle next page click
+function onNextPage(ev) {
+    ev.stopPropagation()
+    nextPage()
+    renderEmojis()
+}
+
+//* Handle previous page click
+function onPrevPage(ev) {
+    ev.stopPropagation()
+    prevPage()
+    renderEmojis()
+}
+
+
+
+
+
 

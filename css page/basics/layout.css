@@ -28,3 +28,26 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 15px;
   }
+
+  /** emoji */
+  
+  @media (max-width: 600px) {
+    .emojis-module.grid {
+        grid-template-columns: repeat(4, 35px);
+        grid-template-rows: repeat(5, 35px);
+    }
+
+    .emoji-select {
+        font-size: 20px;
+    }
+
+    .emoji-item {
+        font-size: 20px;
+    }
+
+    .prev-page,
+    .next-page {
+        width: 25px;
+        height: 25px;
+    }
+}

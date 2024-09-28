@@ -14,11 +14,10 @@
 <body onload="onInit()">
 
     <header class="header">
-        <div class="logo">•´¯`•. 💗Μ𝔶 мｅ𝓶ⓔ💗 .•´¯`•</div>
+        <div class="logo">💗Μ𝔶 мｅ𝓶ⓔ💗</div>
         <nav class="header-right">
-            <button class="nav-btn" onclick="onSaveImg()">Saved</button>
-            <button class="nav-btn">Home</button>
-            <!-- <button class="nav-btn">Edit</button> -->
+            <button class="nav-btn" onclick="showSaved()">Saved</button>
+            <button class="nav-btn" onclick="showGallery()">Home</button>
         </nav>
     </header>
 
@@ -54,11 +53,9 @@
                 <img src="img/X-Everywhere.jpg" alt="The Enchanted Island" class="clickable"
                     data-description="The Enchanted Island">
             </div>
-
         </section>
-        <div class="modal" id="hoverModal"></div>
 
-
+        <!-- <div class="modal-hover" id="hoverModal"></div> -->
 
         <!-- Editor Section -->
         <section class="editor-section">
@@ -79,6 +76,22 @@
                         <label for="stokeColor">Stroke Color</label>
                         <input type="color" class="textColor" value="#ffffff">
                     </div>
+
+                    <div class="emoji-select" onclick="onEmojiSelect(this)">
+                        &#128512
+                        <div class="module-wrapper">
+                            <div class="emojis-module grid"></div>
+                            <div class="module-pages flex space-between">
+                                <button onclick="onPrevPage(event)" class="prev-page">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </button>
+                                <button onclick="onNextPage(event)" class="next-page">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- <button class="btn-save" type="button" onclick="onSaveImage()">Save Image</button> -->
                     <form action="" method="POST" enctype="multipart/form-data" onsubmit="onUploadImg(event)">
                         <input name="img" id="imgData" type="hidden" />
@@ -90,22 +103,32 @@
                 </div>
             </div>
 
-            <label for="fontFamily">Font</label>
-            <select onchange="onFamilyFont(this.value)" name="fontFamilies" class="fontFamily">
-                <option value="impact">Impact</option>
-                <option value="edu">Edu</option>
-                <!-- <option value="roboto">Roboto</option>  -->
-            </select>
-
-            <div class="links-controls widget-space-between">
-                <!-- <button data-trans="save" class="save-meme-btn" onclick="onSave()">Save</button> -->
-                <button class="download" title="Download Meme"><a onclick="onDownloadMeme(this)" href="#"
-                        class="share-link" download="myMeme"><i class="fa-solid fa-download"></i></a></button>
+            <div class="font-controls font-center">
+                <label for="fontFamily">Font</label>
+                <select onchange="onFamilyFont(this.value)" name="fontFamilies" class="fontFamily">
+                    <option value="impact">Impact</option>
+                    <option value="edu">Edu</option>
+                    <!-- <option value="roboto">Roboto</option>  -->
+                </select>
+            
+                <div class="links-controls widget-space-between">
+                    <!-- <button data-trans="save" class="save-meme-btn" onclick="onSave()">Save</button> -->
+                    <button class="download" title="Download Meme">
+                        <a onclick="onDownloadMeme(this)" href="#" class="share-link" download="myMeme">
+                            <i class="fa-solid fa-download"></i>
+                        </a>
+                    </button>
+                </div>
             </div>
 
             <div class="gallery-save">
-                <button class="save-btn" onclick="onSave()">save</button>
-
+                <button class="line-down" title="down line" onclick="onDownLine()">
+                    <i class="fa-solid fa-arrow-down"></i>
+                    <button class="save-btn" onclick="onSave()">save</button>
+                </button>
+                <button class="line-up" title="up line" onclick="onUpLine()">
+                    <i class="fa-solid fa-arrow-up"></i>
+                </button>
             </div>
 
             <div class="font-controls font-center">
@@ -126,43 +149,36 @@
                     <i class="fa-solid fa-align-right"></i>
                 </button>
             </div>
+      
+            
+                    <div class="select-line addLine-center">
 
+                        <button title="Switch lines" onclick="onSwitchLine()">
+                            <i class="fa-sharp fa-solid fa-up-down"></i>
+                        </button>
 
-            <div class="select-line addLine-center">
+                        <button title="Add line" onclick="onAddLine()">
+                            <i class="fa-regular fa-square-plus"></i>
+                        </button>
 
-                <button title="Switch lines" onclick="onSwitchLine()">
-                    <i class="fa-sharp fa-solid fa-up-down"></i>
-                </button>
+                        <button title="Delete line" onclick="onDeleteLine()">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </button>
 
-                <button title="Add line" onclick="onAddLine()">
-                    <i class="fa-regular fa-square-plus"></i>
-                </button>
-
-                <button title="Delete line" onclick="onDeleteLine()">
-                    <i class="fa-regular fa-trash-can"></i>
-                </button>
- 
-            </div>
-
-            <div class="moving-lines">
-                <button title="down line" onclick="onDownLine()">
-                    <i class="fa-solid fa-arrow-down"></i>
-                </button>
-
-                <button title="up line" onclick="onUpLine()">
-                    <i class="fa-solid fa-arrow-up"></i>
-                </button>
-            </div>
-
+                    </div>
+                   
+                    <br>
+                    <br>
+                    <br>
 
         </section>
 
-        <div class="modal" hidden></div>
+        <div class="modal" id="hidden"></div>
 
         <section class="saved-memes-section">
             <h2>Saved Memes</h2>
             <div class="saved-memes-container">
-                <!-- Dynamic content will be added here -->
+
             </div>
         </section>
 
@@ -171,10 +187,10 @@
 
 
     <div class="user-msg"></div>
-    <!-- <footer>
+    <footer>
         <p><a href="mailto:refael14levi@gmail.com">🅰🆁🆃🅷🆄🆁-🆃🅷🅴-🅷🅴🆁🅾
-        </a></p>
-      </footer> -->
+            </a></p>
+    </footer>
 
     <script src="storage.service.js"></script>
     <script src="renderGallery.js"></script>

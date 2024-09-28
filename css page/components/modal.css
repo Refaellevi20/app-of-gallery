@@ -8,12 +8,33 @@
     z-index: 100; 
 }
 
-/* .modal {
+.modal-hover {
+    display: none;
     position: absolute;
-    text-align: center;
-    font-size: 1.3em;
-    padding: 0.3em;
-    background-color: lightcoral;
-    border: 1px solid #222;
-    border-radius: 0.1em;
-} */
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.emoji-select {
+    position: relative;
+    display: inline-block;
+}
+
+.module-wrapper {
+    display: none; /* Initially hide the emoji module */
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    max-height: 200px; /* Set a maximum height */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.module-wrapper.open {
+    display: block; /* Show the emoji module when open */
+}
