@@ -1,5 +1,5 @@
 const imgs = [
-    { src: '/img/2.jpg', alt: 'Dragon', description: 'Free Dragon' },
+    // { src: '/img/2.jpg', alt: 'Dragon', description: 'Free Dragon' },
     { src: './img/003.jpg', alt: 'Knight', description: 'Fire Knight' },
     { src: './img/004.jpg', alt: 'Ice Warrior', description: 'Ice Warrior' },
     { src: './img/005.jpg', alt: 'Storm Rider', description: 'Storm Rider' },
