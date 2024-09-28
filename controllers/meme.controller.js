@@ -417,8 +417,3 @@ function onPrevPage(ev) {
     renderEmojis()
 }
 
-
-
-
-
-

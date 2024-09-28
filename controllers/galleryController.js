@@ -111,13 +111,13 @@ function renderSavedMemes() {
 }
 
 function showGallery() {
-    document.querySelector('.gallery-section').style.display = 'block';
-    document.querySelector('.saved-memes-section').style.display = 'none';
+    document.querySelector('.gallery-section').style.display = 'block'
+    document.querySelector('.saved-memes-section').style.display = 'none'
 }
 
 function showSaved() {
-    document.querySelector('.gallery-section').style.display = 'none';
-    document.querySelector('.saved-memes-section').style.display = 'block';
+    document.querySelector('.gallery-section').style.display = 'none'
+    document.querySelector('.saved-memes-section').style.display = 'block'
 }
 
 // const hoverModal = document.getElementById('hoverModal')
