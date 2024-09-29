@@ -3,7 +3,7 @@
 //! never use VAR lol
 
 let gLastLine = true
-let gYPosition = 500
+let gYPosition = 350
 
 let gEmojis = []
 let gEmojiPageIdx = 0
