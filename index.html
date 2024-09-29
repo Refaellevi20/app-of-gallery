@@ -60,113 +60,119 @@
             <h2>Meme Editor</h2>
             <div class="editor-container">
                 <input type="file" id="imageUpload" accept="image/*">
-                <canvas id="memeCanvas" width="200" height="200" onclick="onMouseClick(event)"></canvas>
-                <div class="controls">
-                    <input type="text" class="topText" placeholder="Top text" oninput="onSetLineTxt(event)">
-                    <div class="color-controls">
-                        <label for="fillColor">Fill Color</label>
-                        <!-- <canvas id="colorWheel" width="200" height="200"></canvas> -->
-                        <input type="color" class="stokeColor" value="#ffffff">
-                    </div>
-                    <div class="color-group">
+                <canvas id="memeCanvas" width="500" height="500" onclick="onMouseClick(event)"></canvas>
+                <div class="hi">
 
-                        <label for="stokeColor">Stroke Color</label>
-                        <input type="color" class="textColor" value="#ffffff">
-                    </div>
-
-                    <div class="emoji-select" onclick="onEmojiSelect(this)">
-                        &#128512
-                        <div class="module-wrapper">
-                            <div class="emojis-module grid"></div>
-                            <div class="module-pages flex space-between">
-                                <button onclick="onPrevPage(event)" class="prev-page">
-                                    <i class="fa-solid fa-chevron-left"></i>
-                                </button>
-                                <button onclick="onNextPage(event)" class="next-page">
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </button>
+                    <div class="controls">
+                        <input type="text" class="topText" placeholder="Top text" oninput="onSetLineTxt(event)">
+                        <div class="color-controls">
+                            <label for="fillColor">Fill Color</label>
+                            <!-- <canvas id="colorWheel" width="200" height="200"></canvas> -->
+                            <input type="color" class="stokeColor" value="#ffffff">
+                        </div>
+                        <div class="color-group">
+    
+                            <label for="stokeColor">Stroke Color</label>
+                            <input type="color" class="textColor" value="#ffffff">
+                        </div>
+    
+                        <div class="emoji-select" onclick="onEmojiSelect(this)">
+                            &#128512
+                            <div class="module-wrapper">
+                                <div class="emojis-module grid"></div>
+                                <div class="module-pages flex space-between">
+                                    <button onclick="onPrevPage(event)" class="prev-page">
+                                        <i class="fa-solid fa-chevron-left"></i>
+                                    </button>
+                                    <button onclick="onNextPage(event)" class="next-page">
+                                        <i class="fa-solid fa-chevron-right"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        <div class="takeing-control">
+                            <!-- <button class="btn-save" type="button" onclick="onSaveImage()">Save Image</button> -->
+                            <form action="" method="POST" enctype="multipart/form-data" onsubmit="onUploadImg(event)">
+                                <input name="img" id="imgData" type="hidden" />
+                                <!-- <button class="btn" type="submit">Upload to Cloudinary</button> -->
+                            </form>
+                            <div class="share-container"></div>
+                            <!-- <a href="#" class="btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download Image from
+                        Canvas</a> -->
+                        </div>
 
-                    <!-- <button class="btn-save" type="button" onclick="onSaveImage()">Save Image</button> -->
-                    <form action="" method="POST" enctype="multipart/form-data" onsubmit="onUploadImg(event)">
-                        <input name="img" id="imgData" type="hidden" />
-                        <!-- <button class="btn" type="submit">Upload to Cloudinary</button> -->
-                    </form>
-                    <div class="share-container"></div>
-                    <!-- <a href="#" class="btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download Image from
-                    Canvas</a> -->
+                        <div class="select-line addLine-center">
+    
+                            <button title="Switch lines" onclick="onSwitchLine()">
+                                <i class="fa-sharp fa-solid fa-up-down"></i>
+                            </button>
+        
+                            <button title="Add line" onclick="onAddLine()">
+                                <i class="fa-regular fa-square-plus"></i>
+                            </button>
+        
+                            <button title="Delete line" onclick="onDeleteLine()">
+                                <i class="fa-regular fa-trash-can"></i>
+                            </button>
+                        </div>
+
+                    </div>
+    
+                    <div class="font-controls font-center">
+                        <label for="fontFamily">Font</label>
+                        <select onchange="onFamilyFont(this.value)" name="fontFamilies" class="fontFamily">
+                            <option value="impact">Impact</option>
+                            <option value="edu">Edu</option>
+                            <!-- <option value="roboto">Roboto</option>  -->
+                        </select>
+    
+                        <div class="links-controls widget-space-between">
+                            <!-- <button data-trans="save" class="save-meme-btn" onclick="onSave()">Save</button> -->
+                            <button class="download" title="Download Meme">
+                                <a onclick="onDownloadMeme(this)" href="#" class="share-link" download="myMeme">
+                                    <i class="fa-solid fa-download"></i>
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+    
+                    <div class="gallery-save">
+                        <button class="line-down" title="down line" onclick="onDownLine()">
+                            <i class="fa-solid fa-arrow-down"></i>
+                            <button class="save-btn" onclick="onSave()">save</button>
+                        </button>
+                        <button class="line-up" title="up line" onclick="onUpLine()">
+                            <i class="fa-solid fa-arrow-up"></i>
+                        </button>
+                    </div>
+    
+                    <div class="font-controls font-center">
+                        <button title="Bigger text" onclick="onChangeFont('size+')"><i class="fa-solid fa-font"></i><i
+                                class="fa-solid fa-plus fa-plusminus"></i></button>
+                        <button title="Smaller text" onclick="onChangeFont('size-')"><i class="fa-solid fa-font"></i><i
+                                class="fa-solid fa-minus fa-plusminus"></i></button>
+                    </div>
+    
+                    <div class="text-align-center aline-center">
+                        <button title="Align left" onclick="onAlign('left')" class="btn">
+                            <i class="fa-solid fa-align-left"></i>
+                        </button>
+                        <button title="Align center" onclick="onAlign('center')" class="btn">
+                            <i class="fa-solid fa-align-center"></i>
+                        </button>
+                        <button title="Align right" onclick="onAlign('right')" class="btn">
+                            <i class="fa-solid fa-align-right"></i>
+                        </button>
+                    </div>
+    
+    
+             
                 </div>
             </div>
 
-            <div class="font-controls font-center">
-                <label for="fontFamily">Font</label>
-                <select onchange="onFamilyFont(this.value)" name="fontFamilies" class="fontFamily">
-                    <option value="impact">Impact</option>
-                    <option value="edu">Edu</option>
-                    <!-- <option value="roboto">Roboto</option>  -->
-                </select>
-            
-                <div class="links-controls widget-space-between">
-                    <!-- <button data-trans="save" class="save-meme-btn" onclick="onSave()">Save</button> -->
-                    <button class="download" title="Download Meme">
-                        <a onclick="onDownloadMeme(this)" href="#" class="share-link" download="myMeme">
-                            <i class="fa-solid fa-download"></i>
-                        </a>
-                    </button>
-                </div>
-            </div>
-
-            <div class="gallery-save">
-                <button class="line-down" title="down line" onclick="onDownLine()">
-                    <i class="fa-solid fa-arrow-down"></i>
-                    <button class="save-btn" onclick="onSave()">save</button>
-                </button>
-                <button class="line-up" title="up line" onclick="onUpLine()">
-                    <i class="fa-solid fa-arrow-up"></i>
-                </button>
-            </div>
-
-            <div class="font-controls font-center">
-                <button title="Bigger text" onclick="onChangeFont('size+')"><i class="fa-solid fa-font"></i><i
-                        class="fa-solid fa-plus fa-plusminus"></i></button>
-                <button title="Smaller text" onclick="onChangeFont('size-')"><i class="fa-solid fa-font"></i><i
-                        class="fa-solid fa-minus fa-plusminus"></i></button>
-            </div>
-
-            <div class="text-align-center aline-center">
-                <button title="Align left" onclick="onAlign('left')" class="btn">
-                    <i class="fa-solid fa-align-left"></i>
-                </button>
-                <button title="Align center" onclick="onAlign('center')" class="btn">
-                    <i class="fa-solid fa-align-center"></i>
-                </button>
-                <button title="Align right" onclick="onAlign('right')" class="btn">
-                    <i class="fa-solid fa-align-right"></i>
-                </button>
-            </div>
-      
-            
-                    <div class="select-line addLine-center">
-
-                        <button title="Switch lines" onclick="onSwitchLine()">
-                            <i class="fa-sharp fa-solid fa-up-down"></i>
-                        </button>
-
-                        <button title="Add line" onclick="onAddLine()">
-                            <i class="fa-regular fa-square-plus"></i>
-                        </button>
-
-                        <button title="Delete line" onclick="onDeleteLine()">
-                            <i class="fa-regular fa-trash-can"></i>
-                        </button>
-
-                    </div>
-                   
-                    <br>
-                    <br>
-                    <br>
+            <br>
+            <br>
+            <br>
 
         </section>
 
