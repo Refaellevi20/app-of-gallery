@@ -1,23 +1,3 @@
-<<<<<<< HEAD
-
-=======
-@media (max-width: 768px) {
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 15px;
-  }
-}
-
-@media (max-width: 500px) {
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 15px;
-  }
-}
->>>>>>> 97d89b3f75c328fd5972c0855fd3c396fe47c278
-
 .editor-container {
   display: grid;
   justify-content: space-between;
@@ -30,7 +10,7 @@
 
 
   .editor-section {
-    flex: 0 0 calc(50%-10px); 
+    flex: 0 0 calc(50%-10px);
     margin: 80px;
   }
 
@@ -45,34 +25,36 @@
   .editor-container {
     display: grid;
     grid-auto-flow: row;
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
     justify-content: center;
-    font-size: 1.75rem; 
+    font-size: 1.75rem;
   }
 
   .editor-section {
-    margin: 20px; 
+    align-self: center;
+    margin: 20px;
   }
 
-  canvas {
+  .editor-section canvas#memeCanvas {
     border: 2px solid black;
     margin-bottom: 10px;
-    flex-grow: 1; 
-    /* align-self: center !important;
-    align-items: center !important; */
-    justify-content: center;
-
-
+    flex-grow: 1;
+    align-self: center;
   }
 
+.editor-container canvas {
+  align-self: center;
+  align-items: center;
+}
+
   .controls {
-    flex-direction: column; 
-    gap: 10px; 
+    flex-direction: column;
+    gap: 10px;
   }
 
   .color-controls,
   .color-group {
-    align-items: stretch; 
+    align-items: stretch;
   }
 }
 
@@ -81,28 +63,28 @@
   .editor-container {
     display: grid;
     grid-auto-flow: row;
-    grid-template-columns: 1fr; 
-    justify-content: center; 
-    font-size: 1.5rem; /
+    grid-template-columns: 1fr;
+    justify-content: center;
+    font-size: 1.5rem;
   }
 
   canvas {
     border: 2px solid black;
     margin-bottom: 10px;
- 
-    
-    flex-grow: 1; 
+
+
+    flex-grow: 1;
   }
 
 
   .controls {
-    flex-direction: column; 
-    gap: 10px; 
+    flex-direction: column;
+    gap: 10px;
   }
 
   .color-controls,
   .color-group {
-    align-items: stretch; 
+    align-items: stretch;
   }
 
 

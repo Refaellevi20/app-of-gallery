@@ -13,7 +13,7 @@
 
 
 .font-controls.font-center {
-    background-color: rgb(187, 241, 241);
+    /* background-color: rgb(187, 241, 241); */
     color: blueviolet;
     padding: 10px;
     display: flex;
