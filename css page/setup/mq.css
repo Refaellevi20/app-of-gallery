@@ -1,4 +1,22 @@
+<<<<<<< HEAD
 
+=======
+@media (max-width: 768px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+  }
+}
+
+@media (max-width: 500px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+  }
+}
+>>>>>>> 97d89b3f75c328fd5972c0855fd3c396fe47c278
 
 .editor-container {
   display: grid;
