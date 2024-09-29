@@ -21,6 +21,7 @@ function initCanvas() {
     renderGallery()
     initMemeEditor()
     renderEmojis()
+    resizeCanvas()
     renderMeme()
 }
 
@@ -33,7 +34,7 @@ function initMemeEditor() {
         renderMeme()
     })
 
-    // Add input event listeners for color changes
+    //* Add input event listeners for color changes
     document.querySelector('.textColor').addEventListener('input', (event) => {
         gMeme.lines[gMeme.selectedLineIdx].color = event.target.value
         renderMeme()

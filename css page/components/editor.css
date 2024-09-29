@@ -15,7 +15,8 @@
 }
 
 body {
-    background-color: pink;
+    /* display: none; */
+    background-color: papayawhip;
 }
 
 .editor-section {
@@ -25,7 +26,7 @@ body {
 .topText {
     font-family: Impact, edu, "roboto", sans-serif;
     text-align: center;
-    width: 100%;
+    width: 400px;
 }
 
 option[value="impact"] {
